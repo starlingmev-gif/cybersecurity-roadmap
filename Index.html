@@ -132,6 +132,21 @@
     .stat b { display: block; font-size: 24px; letter-spacing: -0.02em; color: var(--accent); }
     .stat span { color: var(--muted); font-size: 12px; }
 
+    /* Fast-Track Hiring Strategy Banner */
+    .fast-track-box {
+      background: rgba(16, 185, 129, 0.05);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin-bottom: 28px;
+    }
+    .fast-track-box h3 { margin: 0 0 10px; font-size: 18px; color: var(--accent-def); font-weight: 800; display: flex; align-items: center; gap: 8px; }
+    .fast-track-box p { margin: 0 0 12px; font-size: 13.5px; color: var(--text); line-height: 1.5; }
+    .fast-track-steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 16px; }
+    .fast-track-step { background: rgba(15, 23, 42, 0.4); border: 1px solid var(--line); padding: 16px; border-radius: 10px; }
+    .fast-track-step h4 { margin: 0 0 6px; font-size: 14px; color: var(--accent); }
+    .fast-track-step p { margin: 0; font-size: 12px; color: var(--muted); }
+
     /* Sections */
     section { margin: 44px 0; scroll-margin-top: 24px; }
     .section-head { margin-bottom: 24px; }
@@ -269,6 +284,7 @@
       .nav { grid-template-columns: repeat(3, minmax(0,1fr)); }
       .hero { grid-template-columns: 1fr; }
       .resource-grid, .grid.three, .grid.four { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .fast-track-steps { grid-template-columns: 1fr; }
     }
     @media (max-width: 640px) {
       main { padding: 16px 12px 60px; }
@@ -318,11 +334,11 @@
         <div class="hero-card">
           <span class="eyebrow">Defensive Engineering Roadmap (v2.0 - 2026)</span>
           <h2>Professional Specialization in Defensive Cybersecurity</h2>
-          <p class="lead">A rigorous, technical self-directed curriculum designed exclusively for analyzing and defending modern environments. Priority is placed on building solid detection logic, deep traffic analysis, host system security, and formal corporate-grade incident response.</p>
+          <p class="lead">A rigorous, technical self-directed curriculum designed exclusively for analyzing and defending modern environments. Priority is placed on building solid detection logic, deep traffic analysis, host system security, and cloud-native monitoring.</p>
           <div class="pill-row">
             <span class="pill strong">Focus: Practical Telemetry Skills</span>
             <span class="pill">SOC Operations</span>
-            <span class="pill">Deep Networking Foundations</span>
+            <span class="pill">Deep Cloud & Networks</span>
             <span class="pill">DFIR (Forensics)</span>
             <span class="pill">Analytical Problem Solving</span>
           </div>
@@ -332,6 +348,28 @@
           <div class="stat"><b>104</b><span>Structured weeks of technical prep</span></div>
           <div class="stat"><b>6</b><span>Rigorous portfolio-grade projects</span></div>
           <div class="stat"><b>3</b><span>High-ROI external industry certs</span></div>
+        </div>
+      </section>
+
+      <!-- Fast-Track Hiring Strategy Banner -->
+      <section class="fast-track-box">
+        <h3>🛡️ FAST-TRACK EMPLOYMENT EXIT STRATEGY (EARLY HIRED)</h3>
+        <p>
+          <strong>Industry Hack: You do not need to finish this entire 2-year curriculum to land your first job.</strong> Most modern SOC (Security Operations Center) managers care infinitely more about your practical command of networks and telemetry over academic depth. Once you reach the exit benchmark below, you are technically ready to start applying for Junior SOC positions while finishing the remaining phases on the job.
+        </p>
+        <div class="fast-track-steps">
+          <div class="fast-track-step">
+            <h4>1. Complete Phase 0, 1 & 2</h4>
+            <p>Ensure you have baseline automation skills, can dissect malicious packets via tcpdump/Wireshark, and write functional Splunk/Elastic queries.</p>
+          </div>
+          <div class="fast-track-step">
+            <h4>2. Publish Projects 1, 2 & 4</h4>
+            <p>Your GitHub must host a local telemetry installation script, a detailed packet dissection forensic report, and a containerized Splunk SIEM configuration.</p>
+          </div>
+          <div class="fast-track-step">
+            <h4>3. Pass BTL1 or CDSA</h4>
+            <p>Secure either the Blue Team Level 1 or HTB Certified Defensive Security Analyst. This completely validates your hand-on ability to technical leads.</p>
+          </div>
         </div>
       </section>
 
@@ -401,9 +439,9 @@
             <tbody>
               <tr><td><strong>Baseline Nivelation</strong></td><td>Phase 0: IT & Systems Fundamentals</td><td>Establishing baseline system and shell management, automation, and virtual hosting environments.</td><td>Git, GitHub, Markdown, Hypervisors, essential terminal CLI.</td></tr>
               <tr><td><strong>Technical Junior</strong></td><td>Phase 1: Networking & Network Telemetry</td><td>In-depth packet capture, protocol modeling, routing topologies, and perimeter defense systems.</td><td>Wireshark, tcpdump, Packet Tracer, GNS3, Suricata, Snort.</td></tr>
-              <tr><td><strong>SOC Associate</strong></td><td>Phase 2: Endpoint Monitoring & SIEM</td><td>Systematic endpoint/host audit configuration, log parsing, SIEM queries, and detection engineering.</td><td>Event Viewer, Sysmon, Splunk SPL, Elastic KQL, Sigma Rules.</td></tr>
+              <tr><td><strong>SOC Associate</strong></td><td>Phase 2: Endpoint & Cloud Telemetry</td><td>Systematic host/cloud audit configurations, API logs, SIEM querying, and detection engineering.</td><td>Event Viewer, Sysmon, AWS CloudTrail, Splunk SPL, Elastic KQL, Sigma.</td></tr>
               <tr><td><strong>DFIR Specialist</strong></td><td>Phase 3: Digital Forensics & Incident Response</td><td>Deep post-exploitation investigation across memory, persistent disk storage, and simple malware behavior.</td><td>Autopsy, Volatility 3, FTK Imager, controlled Sandboxes (PE/scripts).</td></tr>
-              <tr><td><strong>Enterprise Architect</strong></td><td>Phase 4: Active Directory & Cloud Defense</td><td>Securing corporate AD forests, parsing domain-level exploit logs, and managing IAM/telemetry in public cloud infrastructures.</td><td>Active Directory, Group Policies, AWS, CloudTrail, Azure Sentinel.</td></tr>
+              <tr><td><strong>Enterprise Architect</strong></td><td>Phase 4: Active Directory & Cloud Defense</td><td>Securing corporate AD forests, parsing domain-level exploit logs, and managing IAM/telemetry in public cloud infrastructures.</td><td>Active Directory, Group Policies, AWS, IAM, CloudTrail, Azure Sentinel.</td></tr>
               <tr><td><strong>Elite Defender</strong></td><td>Phase 5: Consolidation & Portfolio</td><td>Refining structured project outputs, polishing write-ups, and building high-impact community profiles.</td><td>Professional GitHub, curated incident write-ups, CyberDefenders.</td></tr>
             </tbody>
           </table>
@@ -443,17 +481,17 @@
         <div class="grid three">
           <div class="card">
             <h3><span class="cert-badge">CompTIA Security+</span></h3>
-            <p><strong>Goal: ATS Filter & Theoretical Baseline</strong></p>
-            <p>Focuses primarily on security governance, risk management frameworks (NIST, ISO), and general engineering terminology. Crucial for bypassing Automated Tracking Systems (ATS) used by HR at major enterprise firms.</p>
+            <p><strong>Status: OPTIONAL / HR-Filter Only</strong></p>
+            <p>Focuses primarily on security governance, risk management frameworks (NIST, ISO), and general engineering terminology. Highly optional. Only pursue this if targeting traditional enterprise sectors or government jobs that utilize automated HR screeners.</p>
             <ul>
               <li><strong>Format:</strong> Multiple-choice (theoretical)</li>
               <li><strong>Approx. Cost:</strong> ~$400 USD</li>
-              <li><strong>Market Utility:</strong> Mandatory baseline for regulatory and corporate gatekeeping</li>
+              <li><strong>Market Utility:</strong> Bypassing initial non-technical HR gatekeepers</li>
             </ul>
           </div>
           <div class="card">
             <h3><span class="cert-badge pro">BTL1 (Blue Team Level 1)</span></h3>
-            <p><strong>Goal: Practical Incident Triaging Capability</strong></p>
+            <p><strong>Status: HIGHLY RECOMMENDED (JOB TRIGGER)</strong></p>
             <p>A rigorous, practical 24-hour examination that requires candidates to respond to simulated corporate security incident telemetry. It tests log parsing, incident investigation, and network triaging on a live cloud VM.</p>
             <ul>
               <li><strong>Format:</strong> 100% practical, hands-on lab assessment</li>
@@ -463,7 +501,7 @@
           </div>
           <div class="card">
             <h3><span class="cert-badge pro">HTB CDSA (Defensive Security Analyst)</span></h3>
-            <p><strong>Goal: Advanced Detection Engineering & Threat Hunting</strong></p>
+            <p><strong>Status: HIGHLY RECOMMENDED (JOB TRIGGER)</strong></p>
             <p>An exhaustive, multi-day, practical exam requiring deep host analysis, forensic log parsing, and the development of high-fidelity detection rules against sophisticated threat actors.</p>
             <ul>
               <li><strong>Format:</strong> Deep, connected multi-day VM threat hunting lab</li>
@@ -606,10 +644,11 @@
         ]
       },
       {
-        id: "phase-2", name: "Phase 2: Host Monitoring, Audit Logs & SIEM Operations", duration: "3-4 Months", goal: "Audit OS-level endpoint events, ingest and centralize massive event logs, and develop high-fidelity alert correlation rules.", rows: [
+        id: "phase-2", name: "Phase 2: Endpoint & Cloud Telemetry Ingestion (SOC Ops)", duration: "3-4 Months", goal: "Audit OS-level endpoint events, ingest cloud telemetry logs (AWS CloudTrail, Azure Monitor), centralize log feeds, and develop high-fidelity alert correlations.", rows: [
           ["2.1", "Endpoint Audit Telemetry", "Local logging configurations. Windows GPO auditing policies (Security, System, Application), Linux syslog configurations (auth.log), and deploying Microsoft Sysmon.", "Sysmon Docs (SwiftOnSecurity Config), Event Viewer Manual", "4 Weeks", "Phase 0 & Phase 1", "Local endpoint Sysmon configuration deploying custom event filters", "Identify process injections and anomalous cmd executions by correlating process creation event IDs (ID 1, 3, 11)."],
-          ["2.2", "SIEM Engineering & Analytics", "Configuring Splunk Enterprise or Elastic Stack. Writing advanced search queries (Splunk SPL / Elastic KQL) to audit host and network data feeds.", "Splunk Enterprise Training, Elastic Path", "6 Weeks", "Phase 2.1", "Operational SIEM dashboard correlating threat scenarios from event logs", "Build an analytics query linking a web exploitation event to a subsequent local process execution on the host."],
-          ["2.3", "Platform-Agnostic Detection Rules", "Drafting system detection rules using Sigma syntax. Analyzing volatile memory and tracking threat binaries in-memory using Yara rules.", "Sigma Standard Docs, Yara Rules Guide", "4 Weeks", "Phase 2.2", "GitHub repository of custom Sigma alert rules validated with live audit telemetry", "Write alert signatures targeting LSASS credential dump attempts while minimizing false positives from normal system noise."]
+          ["2.2", "Cloud Telemetry & Log Ingestion", "Understanding cloud-specific logging architectures: AWS CloudTrail, VPC Flow Logs, and Azure Activity Logs. Centralizing diverse API inputs.", "AWS CloudTrail Docs, Azure Logs Sandbox", "3 Weeks", "Phase 1.1", "Cloud log ingestion flow diagram and parser script", "Explain the difference between control-plane API audit events and data-plane resource-level logs in AWS."],
+          ["2.3", "SIEM Engineering & Analytics", "Configuring Splunk Enterprise or Elastic Stack. Writing advanced search queries (Splunk SPL / Elastic KQL) to audit host, network, and cloud data feeds.", "Splunk Enterprise Training, Elastic Path", "5 Weeks", "Phase 2.2", "Operational SIEM dashboard correlating threat scenarios from event logs", "Build an analytics query linking a web exploitation event to a subsequent local process execution on the host."],
+          ["2.4", "Platform-Agnostic Detection Rules", "Drafting system detection rules using Sigma syntax. Analyzing volatile memory and tracking threat binaries in-memory using Yara rules.", "Sigma Standard Docs, Yara Rules Guide", "4 Weeks", "Phase 2.3", "GitHub repository of custom Sigma alert rules validated with live audit telemetry", "Write alert signatures targeting LSASS credential dump attempts while minimizing false positives from normal system noise."]
         ]
       },
       {
@@ -620,9 +659,10 @@
         ]
       },
       {
-        id: "phase-4", name: "Phase 4: Enterprise Infrastructures (AD & Cloud)", duration: "3-4 Months", goal: "Understand Active Directory security, monitor authentication vectors, and deploy defensive monitoring in public cloud assets.", rows: [
-          ["4.1", "Active Directory Security", "Auditing and monitoring AD forests. Identifying Kerberoasting, AS-REP Roasting, Golden Ticket persistence, delegated access vulnerabilities, and Pass-The-Hash.", "Microsoft AD Security, THM AD Paths", "6 Weeks", "Phase 2 & Phase 3", "Hardening and auditing Group Policy Object (GPO) blueprint for AD", "Detect and alert on a Privilege Escalation attempt on a domain controller using domain Security events (Event ID 4768/4769)."],
-          ["4.2", "Cloud Monitoring & IAM Audit", "Implementing the principle of least privilege in AWS/Azure environments. Tracking API and access telemetry logs (CloudTrail, Activity logs).", "AWS Security Hub Docs, Azure Defender Paths", "5 Weeks", "Phase 2", "Infrastructure as Code AWS/Azure security monitoring configuration", "Analyze API logs to identify geographically impossible logons or irregular programmatic access key rotations."]
+        id: "phase-4", name: "Phase 4: Enterprise AD & Cloud Defense Architecture", duration: "3-5 Months", goal: "Understand Active Directory security, monitor authentication vectors, and deploy defensive monitoring, identity auditing, and posture management in public cloud infrastructures.", rows: [
+          ["4.1", "Active Directory Security", "Auditing and monitoring AD forests. Identifying Kerberoasting, AS-REP Roasting, Golden Ticket persistence, delegated access vulnerabilities, and Pass-The-Hash.", "Microsoft AD Security, THM AD Rooms", "6 Weeks", "Phase 2 & Phase 3", "Hardening and auditing Group Policy Object (GPO) blueprint for AD", "Detect and alert on a Privilege Escalation attempt on a domain controller using domain Security events (Event ID 4768/4769)."],
+          ["4.2", "Cloud Identity & Resource Defense", "Auditing AWS/Azure IAM permissions, monitoring metadata service (IMDS) security, detecting S3/Storage exposures, and implementing the principle of least privilege.", "AWS Identity Security, Azure IAM Paths", "6 Weeks", "Phase 2.2", "Cloud Infrastructure Entitlement Management (CIEM) audit report", "Detect and document AWS IAM privilege escalation paths and metadata service (IMDS) token abuse attempts."],
+          ["4.3", "Cloud Security Posture Management (CSPM)", "Analyzing cloud security configuration drift, configuring GuardDuty, Microsoft Defender for Cloud, and writing automated alert rules for IAM and API drift.", "AWS Security Hub, Sentinel Docs", "4 Weeks", "Phase 4.2", "Infrastructure as Code AWS/Azure security monitoring configuration", "Analyze API logs to identify geographically impossible logons or irregular programmatic access key rotations."]
         ]
       }
     ];
@@ -646,14 +686,15 @@
       {phase:"Phase 1", start:13, end:22, focus:"Pila de protocolos TCP/IP, CIDR subnetting, packet structures, and routing logic.", resources:"Cisco Skills for All", deliverable:"Segmented network logical diagram."},
       {phase:"Phase 1", start:23, end:30, focus:"Headless network capturing via tcpdump and deep packet analysis in Wireshark.", resources:"Chris Greer, tcpdump manual", deliverable:"Packet analysis report of a mock intrusion PCAP."},
       {phase:"Phase 1", start:31, end:36, focus:"Firewall architectures and writing Suricata/Snort alert rules.", resources:"Suricata manual, Snort guide", deliverable:"Valid Suricata signature set detecting network probes."},
-      {phase:"Phase 2", start:37, end:46, focus:"System auditing policies, Sysmon deployment, and process tree analysis.", resources:"Microsoft Sysinternals, Windows auditing manuals", deliverable:"Centralized local logging Sysmon install package."},
-      {phase:"Phase 2", start:47, end:58, focus:"SIEM operations (Splunk/Elastic), ingesting data logs, and building search alerts.", resources:"Splunk Enterprise, Elastic", deliverable:"Centralized Splunk SOC monitoring dashboard."},
-      {phase:"Phase 2", start:59, end:66, focus:"Detection engineering: translating threat indicators into Sigma and Yara rules.", resources:"Sigma Rules syntax, Yara manuals", deliverable:"A verified set of 5 Sigma detection rules pushed to GitHub."},
+      {phase:"Phase 2", start:37, end:44, focus:"System auditing policies, Sysmon deployment, and process tree analysis.", resources:"Microsoft Sysinternals, Windows auditing manuals", deliverable:"Centralized local logging Sysmon install package."},
+      {phase:"Phase 2", start:45, end:48, focus:"Ingesting and parsing cloud-native telemetry logs: AWS CloudTrail, VPC Flow Logs, and API feeds.", resources:"AWS CloudTrail Docs", deliverable:"Cloud log JSON parsers and event mapping schematic."},
+      {phase:"Phase 2", start:49, end:60, focus:"SIEM operations (Splunk/Elastic), ingesting data logs, and building search alerts.", resources:"Splunk Enterprise, Elastic", deliverable:"Centralized Splunk SOC monitoring dashboard."},
+      {phase:"Phase 2", start:61, end:66, focus:"Detection engineering: translating threat indicators into Sigma and Yara rules.", resources:"Sigma Rules syntax, Yara manuals", deliverable:"A verified set of 5 Sigma detection rules pushed to GitHub."},
       {phase:"Phase 3", start:67, end:78, focus:"Disk forensics, Master File Table analysis, and tracking Registry changes in Autopsy.", resources:"Autopsy, SANS Forensics documentation", deliverable:"Comprehensive disk analysis threat timeline report."},
       {phase:"Phase 3", start:79, end:86, focus:"Memory forensics and volatile RAM dump analysis utilizing Volatility 3.", resources:"Volatility, CyberDefenders", deliverable:"Memory forensic analysis write-up extracting active process anomalies."},
       {phase:"Phase 3", start:87, end:92, focus:"Sandboxing, reading portable executable headers, and dissecting simple script malware.", resources:"Practical Malware Analysis", deliverable:"An IoC signature sheet from a dissected malware script."},
       {phase:"Phase 4", start:93, end:98, focus:"Active Directory security, Domain Controller log auditing, and GPO bastions.", resources:"Microsoft AD guide, THM AD rooms", deliverable:"Domain auditing and GPO security blueprint config."},
-      {phase:"Phase 4", start:99, end:104, focus:"Cloud security IAM architecture, final SOC simulation labs, and portfolio refinement.", resources:"AWS/Azure portals, CyberDefenders Sherlocks", deliverable:"Consolidated public GitHub portfolio ready for review."}
+      {phase:"Phase 4", start:99, end:104, focus:"Cloud Identity IAM privilege escalation paths, CSPM alert automation, and portfolio refinement.", resources:"AWS IAM docs, Azure Sentinel", deliverable:"Active AWS/Azure IAM defense assessment report."}
     ];
 
     // Structured Project Specifications
@@ -720,15 +761,15 @@
       },
       {
         level: "3",
-        area: "Host Forensics (DFIR)",
-        title: "Multi-Artifact Disk and Memory Forensic Analysis",
+        area: "Cloud Forensic Investigation",
+        title: "Multi-Cloud IAM Hijacking & CloudTrail Exfiltration Forensic Deep Dive",
         difficulty: "Difícil",
-        tech: "Volatility 3, Autopsy, FTK Imager",
-        obj: "Extract and cross-reference system artifacts to reconstruct threat activities on compromised systems.",
-        scope: "Performing RAM analysis for active threads, parsing persistent registry structures, and analyzing Master File Table registries.",
-        evid: "Cross-correlated timeline demonstrating that the memory exploit signature aligns with executable residual files found on disk.",
-        deliv: "Comprehensive digital forensics report tracking vectors, persistence nodes, and network indicator findings.",
-        lessons: "Modern threats avoid file footprints by operating in-memory; volatility analysis is the baseline required to catch fileless attacks."
+        tech: "AWS CloudTrail, Volatility 3, Autopsy, Athena",
+        obj: "Investigate a high-severity cloud environment compromise starting from an leaked API key to complete administrative privilege escalation.",
+        scope: "Parsing CloudTrail JSON log exports, mapping API user actions, isolating compromised metadata service (IMDS) calls, and tracing data exfiltration.",
+        evid: "Correlated trace demonstrating the lateral transition from a low-privilege instance profile to administrative policy manipulation.",
+        deliv: "Cloud Forensic Incident Report tracking specific API calls, exfiltration locations, and recommended IAM remediation steps.",
+        lessons: "In cloud environments, identity is the perimeter. Understanding the sequence of API calls is equivalent to tracking process memory on local systems."
       }
     ];
 
@@ -755,12 +796,12 @@
         ]
       },
       {
-        group: "Network Security & Packet Dissection",
+        group: "Network & Cloud Security Dissection",
         items: [
           "I can initiate tcpdump packet captures over headless terminal consoles applying custom BPF filtering parameters.",
           "I can locate ARP spoofing, DNS tunnels, and anomalous data dumps when inspecting raw packet capture files in Wireshark.",
           "I have built and tested 3 custom intrusion detection signatures for Suricata or Snort.",
-          "I can technically articulate the state differences between Stateful Inspection firewalls and deep packet Next-Gen architectures.",
+          "I can parse JSON AWS CloudTrail and VPC Flow logs to isolate metadata token abuse (IMDSv1 vs v2) and privilege escalation.",
           "I can draft and secure an enterprise CIDR network topology using Packet Tracer or GNS3 to prevent lateral domain hops."
         ]
       }
