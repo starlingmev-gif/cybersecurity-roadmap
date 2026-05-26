@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Advanced Self-Directed Study Plan for Defensive Security (Blue Team) v2.0</title>
-  <meta name="description" content="An interactive, rigorous self-directed curriculum to become a SOC Analyst, Incident Responder, and Digital Forensics Specialist." />
+  <title>Elite Study Plan for Defensive Security (Blue Team) v2.0</title>
+  <meta name="description" content="An interactive, bilingual self-directed curriculum for defensive cybersecurity specialists." />
   <style>
     :root {
       --bg: #050811;
@@ -57,7 +57,7 @@
       flex-direction: column;
       justify-content: space-between;
     }
-    .brand { display: flex; gap: 12px; align-items: center; margin-bottom: 24px; }
+    .brand { display: flex; gap: 12px; align-items: center; margin-bottom: 12px; }
     .brand-mark {
       width: 42px; height: 42px; border-radius: 10px;
       background: linear-gradient(135deg, var(--accent), var(--accent-def));
@@ -67,6 +67,38 @@
     .brand h1 { font-size: 13px; margin: 0; line-height: 1.2; letter-spacing: 0.8px; text-transform: uppercase; font-weight: 800; }
     .brand p { font-size: 11px; color: var(--muted); margin: 2px 0 0; }
     
+    /* Language Toggle Switcher */
+    .lang-switcher {
+      display: flex;
+      gap: 4px;
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid var(--line);
+      padding: 4px;
+      border-radius: 10px;
+      margin-bottom: 24px;
+    }
+    .lang-btn {
+      flex: 1;
+      background: transparent;
+      border: none;
+      color: var(--muted);
+      padding: 6px 12px;
+      font-size: 11.5px;
+      font-weight: 700;
+      font-family: var(--mono);
+      cursor: pointer;
+      border-radius: 6px;
+      transition: all 0.15s ease;
+    }
+    .lang-btn.active {
+      background: var(--accent);
+      color: #03050a;
+    }
+    .lang-btn:hover:not(.active) {
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.04);
+    }
+
     .nav { display: grid; gap: 4px; }
     .nav a {
       color: var(--muted);
@@ -297,7 +329,7 @@
 
   <!-- Toast system notification -->
   <div id="toast" class="custom-alert">
-    <span style="font-weight: bold; color: var(--accent-def);">🛡️ CONSOLE:</span>
+    <span style="font-weight: bold; color: var(--accent-def);" id="toast-header">🛡️ CONSOLE:</span>
     <span id="toast-text">Action completed successfully.</span>
   </div>
 
@@ -307,24 +339,31 @@
         <div class="brand">
           <div class="brand-mark">BT</div>
           <div>
-            <h1>Elite Blue Team</h1>
-            <p>Technical Roadmap v2.0</p>
+            <h1 data-i18n="brand_title">Elite Blue Team</h1>
+            <p data-i18n="brand_sub">Technical Roadmap v2.0</p>
           </div>
         </div>
+
+        <!-- Language switcher -->
+        <div class="lang-switcher">
+          <button class="lang-btn active" id="btn-es" onclick="setLanguage('es')">ES</button>
+          <button class="lang-btn" id="btn-en" onclick="setLanguage('en')">EN</button>
+        </div>
+
         <nav class="nav" id="nav">
-          <a href="#dashboard">Dashboard</a>
-          <a href="#diagnostic">Initial Assessment</a>
-          <a href="#weekly-method">Weekly Methodology</a>
-          <a href="#curriculum-map">Curriculum Map</a>
-          <a href="#phases">Technical Phases</a>
-          <a href="#resources">Resource Library</a>
-          <a href="#cert-track">Certification Track</a>
-          <a href="#week-roadmap">Weekly Schedule</a>
-          <a href="#projects">Portfolio Projects</a>
-          <a href="#checklist">Observable Checklist</a>
+          <a href="#dashboard" data-i18n="nav_dashboard">Dashboard</a>
+          <a href="#diagnostic" data-i18n="nav_diagnostic">Initial Assessment</a>
+          <a href="#weekly-method" data-i18n="nav_weekly_method">Weekly Methodology</a>
+          <a href="#curriculum-map" data-i18n="nav_curriculum_map">Curriculum Map</a>
+          <a href="#phases" data-i18n="nav_phases">Technical Phases</a>
+          <a href="#resources" data-i18n="nav_resources">Resource Library</a>
+          <a href="#cert-track" data-i18n="nav_cert_track">Certification Track</a>
+          <a href="#week-roadmap" data-i18n="nav_week_roadmap">Weekly Schedule</a>
+          <a href="#projects" data-i18n="nav_projects">Portfolio Projects</a>
+          <a href="#checklist" data-i18n="nav_checklist">Observable Checklist</a>
         </nav>
       </div>
-      <div class="sidebar-note">
+      <div class="sidebar-note" data-i18n="sidebar_note">
         Estimated workload: 15-20 hours/week. Your progress is saved automatically via persistent local storage.
       </div>
     </aside>
@@ -332,43 +371,43 @@
     <main>
       <section class="hero" id="dashboard">
         <div class="hero-card">
-          <span class="eyebrow">Defensive Engineering Roadmap (v2.0 - 2026)</span>
-          <h2>Professional Specialization in Defensive Cybersecurity</h2>
-          <p class="lead">A rigorous, technical self-directed curriculum designed exclusively for analyzing and defending modern environments. Priority is placed on building solid detection logic, deep traffic analysis, host system security, and cloud-native monitoring.</p>
+          <span class="eyebrow" data-i18n="hero_eyebrow">Defensive Engineering Roadmap (v2.0 - 2026)</span>
+          <h2 data-i18n="hero_title">Professional Specialization in Defensive Cybersecurity</h2>
+          <p class="lead" data-i18n="hero_lead">A rigorous, technical self-directed curriculum designed exclusively for analyzing and defending modern environments. Priority is placed on building solid detection logic, deep traffic analysis, host system security, and cloud-native monitoring.</p>
           <div class="pill-row">
-            <span class="pill strong">Focus: Practical Telemetry Skills</span>
-            <span class="pill">SOC Operations</span>
-            <span class="pill">Deep Cloud & Networks</span>
-            <span class="pill">DFIR (Forensics)</span>
-            <span class="pill">Analytical Problem Solving</span>
+            <span class="pill strong" data-i18n="pill_focus">Focus: Practical Telemetry Skills</span>
+            <span class="pill" data-i18n="pill_soc">SOC Operations</span>
+            <span class="pill" data-i18n="pill_cloud">Deep Cloud & Networks</span>
+            <span class="pill" data-i18n="pill_dfir">DFIR (Forensics)</span>
+            <span class="pill" data-i18n="pill_solving">Analytical Problem Solving</span>
           </div>
         </div>
         <div class="stat-card card">
-          <div class="stat"><b>6</b><span>Sequential technical phases of learning</span></div>
-          <div class="stat"><b>104</b><span>Structured weeks of technical prep</span></div>
-          <div class="stat"><b>6</b><span>Rigorous portfolio-grade projects</span></div>
-          <div class="stat"><b>3</b><span>High-ROI external industry certs</span></div>
+          <div class="stat"><b id="stat-phases-num">6</b><span data-i18n="stat_phases">Sequential technical phases of learning</span></div>
+          <div class="stat"><b id="stat-weeks-num">104</b><span data-i18n="stat_weeks">Structured weeks of technical prep</span></div>
+          <div class="stat"><b id="stat-projects-num">6</b><span data-i18n="stat_projects">Rigorous portfolio-grade projects</span></div>
+          <div class="stat"><b id="stat-certs-num">3</b><span data-i18n="stat_certs">High-ROI external industry certs</span></div>
         </div>
       </section>
 
       <!-- Fast-Track Hiring Strategy Banner -->
       <section class="fast-track-box">
-        <h3>🛡️ FAST-TRACK EMPLOYMENT EXIT STRATEGY (EARLY HIRED)</h3>
-        <p>
+        <h3 id="ft-title">🛡️ FAST-TRACK EMPLOYMENT EXIT STRATEGY (EARLY HIRED)</h3>
+        <p id="ft-desc">
           <strong>Industry Hack: You do not need to finish this entire 2-year curriculum to land your first job.</strong> Most modern SOC (Security Operations Center) managers care infinitely more about your practical command of networks and telemetry over academic depth. Once you reach the exit benchmark below, you are technically ready to start applying for Junior SOC positions while finishing the remaining phases on the job.
         </p>
         <div class="fast-track-steps">
           <div class="fast-track-step">
-            <h4>1. Complete Phase 0, 1 & 2</h4>
-            <p>Ensure you have baseline automation skills, can dissect malicious packets via tcpdump/Wireshark, and write functional Splunk/Elastic queries.</p>
+            <h4 id="ft-step1-title">1. Complete Phase 0, 1 & 2</h4>
+            <p id="ft-step1-desc">Ensure you have baseline automation skills, can dissect malicious packets via tcpdump/Wireshark, and write functional Splunk/Elastic queries.</p>
           </div>
           <div class="fast-track-step">
-            <h4>2. Publish Projects 1, 2 & 4</h4>
-            <p>Your GitHub must host a local telemetry installation script, a detailed packet dissection forensic report, and a containerized Splunk SIEM configuration.</p>
+            <h4><span id="ft-step2-title">2. Publish Projects 1, 2 & 4</span></h4>
+            <p id="ft-step2-desc">Your GitHub must host a local telemetry installation script, a detailed packet dissection forensic report, and a containerized Splunk SIEM configuration.</p>
           </div>
           <div class="fast-track-step">
-            <h4>3. Pass BTL1 or CDSA</h4>
-            <p>Secure either the Blue Team Level 1 or HTB Certified Defensive Security Analyst. This completely validates your hand-on ability to technical leads.</p>
+            <h4><span id="ft-step3-title">3. Pass BTL1 or CDSA</span></h4>
+            <p id="ft-step3-desc">Secure either the Blue Team Level 1 or HTB Certified Defensive Security Analyst. This completely validates your hand-on ability to technical leads.</p>
           </div>
         </div>
       </section>
@@ -376,8 +415,8 @@
       <!-- Diagnostic Assessment -->
       <section id="diagnostic">
         <div class="section-head">
-          <h2>Initial Diagnostics Test</h2>
-          <p>Complete this brief self-assessment to determine if your baseline IT and computing skills are sufficient to start directly at Phase 1, or if completing Phase 0 is highly recommended.</p>
+          <h2 data-i18n="diag_section_title">Initial Diagnostics Test</h2>
+          <p data-i18n="diag_section_desc">Complete this brief self-assessment to determine if your baseline IT and computing skills are sufficient to start directly at Phase 1, or if completing Phase 0 is highly recommended.</p>
         </div>
         <div class="diagnostic-box">
           <div id="diag-q-text" class="diagnostic-question">Question 1 of 3: What is your current comfort level with command-line interfaces (Bash or PowerShell)?</div>
@@ -391,36 +430,23 @@
       <!-- Weekly Study Methodology -->
       <section id="weekly-method">
         <div class="section-head">
-          <h2>Weekly Study Allocation Strategy</h2>
-          <p>Defensive cybersecurity is an empirical, hands-on discipline. Study hours must be balanced carefully to maximize conceptual retention and command-line agility.</p>
+          <h2 data-i18n="wm_title">Weekly Study Allocation Strategy</h2>
+          <p data-i18n="wm_desc">Defensive cybersecurity is an empirical, hands-on discipline. Study hours must be balanced carefully to maximize conceptual retention and command-line agility.</p>
         </div>
         <div class="grid two">
           <div class="card">
-            <h3>Weekly Time Allocation (15-20 Hours)</h3>
+            <h3 data-i18n="wm_alloc_title">Weekly Time Allocation (15-20 Hours)</h3>
             <div class="table-wrap">
-              <table>
-                <thead><tr><th>Activity Type</th><th>Hours/Week</th><th>Operational Objective</th></tr></thead>
-                <tbody>
-                  <tr><td><strong>Conceptual Study</strong></td><td>4-5</td><td>Modeling protocol behaviors, reading security standards (RFC, NIST), and dissecting threat vectors.</td></tr>
-                  <tr><td><strong>Hands-On Labs</strong></td><td>6-8</td><td>Working through sandboxed systems, simulated exploits, packet traces, and forensic targets.</td></tr>
-                  <tr><td><strong>Documentation & Reporting</strong></td><td>3-4</td><td>Drafting defensive case write-ups, detailing forensic timelines, and cataloging indicators.</td></tr>
-                  <tr><td><strong>Portfolio Management</strong></td><td>2-3</td><td>Publishing validated code, scripts, and logs to local and remote repositories (GitHub).</td></tr>
-                </tbody>
+              <table id="table-allocation">
+                <!-- Dynamically Rendered -->
               </table>
             </div>
           </div>
           <div class="card">
-            <h3>Suggested Weekly Schedule Pattern</h3>
+            <h3 data-i18n="wm_sched_title">Suggested Weekly Schedule Pattern</h3>
             <div class="table-wrap">
-              <table>
-                <thead><tr><th>Day</th><th>Planned Activity</th></tr></thead>
-                <tbody>
-                  <tr><td><strong>Day 1</strong></td><td>Read core technical theory, analyze system/network protocol states, and take structured notes.</td></tr>
-                  <tr><td><strong>Day 2</strong></td><td>Execute a guided virtual lab to inspect normal states vs. target exploit behaviors.</td></tr>
-                  <tr><td><strong>Day 3</strong></td><td>Engage in an unguided sandbox challenge (e.g., reconstruct an infection or packet trace).</td></tr>
-                  <tr><td><strong>Day 4</strong></td><td>Write a professional-grade technical report with screenshots, timelines, and verified IoCs.</td></tr>
-                  <tr><td><strong>Day 5</strong></td><td>Commit artifacts to Git, analyze and troubleshoot rules to reduce false positives, and run Anki.</td></tr>
-                </tbody>
+              <table id="table-schedule">
+                <!-- Dynamically Rendered -->
               </table>
             </div>
           </div>
@@ -430,20 +456,12 @@
       <!-- Curriculum Map -->
       <section id="curriculum-map">
         <div class="section-head">
-          <h2>Defensive Competency Curriculum Map</h2>
-          <p>This progressive track builds your core engineering competencies, steadily increasing the abstraction level as you advance.</p>
+          <h2 data-i18n="cmap_title">Defensive Competency Curriculum Map</h2>
+          <p data-i18n="cmap_desc">This progressive track builds your core engineering competencies, steadily increasing the abstraction level as you advance.</p>
         </div>
         <div class="table-wrap">
-          <table>
-            <thead><tr><th>Academic Level</th><th>Curricular Phase</th><th>Operational Focus</th><th>Technical Ecosystem</th></tr></thead>
-            <tbody>
-              <tr><td><strong>Baseline Nivelation</strong></td><td>Phase 0: IT & Systems Fundamentals</td><td>Establishing baseline system and shell management, automation, and virtual hosting environments.</td><td>Git, GitHub, Markdown, Hypervisors, essential terminal CLI.</td></tr>
-              <tr><td><strong>Technical Junior</strong></td><td>Phase 1: Networking & Network Telemetry</td><td>In-depth packet capture, protocol modeling, routing topologies, and perimeter defense systems.</td><td>Wireshark, tcpdump, Packet Tracer, GNS3, Suricata, Snort.</td></tr>
-              <tr><td><strong>SOC Associate</strong></td><td>Phase 2: Endpoint & Cloud Telemetry</td><td>Systematic host/cloud audit configurations, API logs, SIEM querying, and detection engineering.</td><td>Event Viewer, Sysmon, AWS CloudTrail, Splunk SPL, Elastic KQL, Sigma.</td></tr>
-              <tr><td><strong>DFIR Specialist</strong></td><td>Phase 3: Digital Forensics & Incident Response</td><td>Deep post-exploitation investigation across memory, persistent disk storage, and simple malware behavior.</td><td>Autopsy, Volatility 3, FTK Imager, controlled Sandboxes (PE/scripts).</td></tr>
-              <tr><td><strong>Enterprise Architect</strong></td><td>Phase 4: Active Directory & Cloud Defense</td><td>Securing corporate AD forests, parsing domain-level exploit logs, and managing IAM/telemetry in public cloud infrastructures.</td><td>Active Directory, Group Policies, AWS, IAM, CloudTrail, Azure Sentinel.</td></tr>
-              <tr><td><strong>Elite Defender</strong></td><td>Phase 5: Consolidation & Portfolio</td><td>Refining structured project outputs, polishing write-ups, and building high-impact community profiles.</td><td>Professional GitHub, curated incident write-ups, CyberDefenders.</td></tr>
-            </tbody>
+          <table id="table-curriculum">
+            <!-- Dynamically Rendered -->
           </table>
         </div>
       </section>
@@ -451,8 +469,8 @@
       <!-- Technical Phases -->
       <section id="phases">
         <div class="section-head">
-          <h2>Technical Phase Specifications</h2>
-          <p>Each phase requires the completion and verification of distinct, documented hands-on deliverables.</p>
+          <h2 data-i18n="phases_title">Technical Phase Specifications</h2>
+          <p data-i18n="phases_desc">Each phase requires the completion and verification of distinct, documented hands-on deliverables.</p>
         </div>
         <div id="phaseTables"></div>
       </section>
@@ -460,14 +478,14 @@
       <!-- Resource Library -->
       <section id="resources">
         <div class="section-head">
-          <h2>High-Value Auditable Resource Library</h2>
-          <p>Curated list of technical, free, or auditable resources. Use the search and filter tools to narrow down specific skills.</p>
-          <button class="button" id="clearProgress">Reset All Saved Progress</button>
+          <h2 data-i18n="res_title">High-Value Auditable Resource Library</h2>
+          <p data-i18n="res_desc">Curated list of technical, free, or auditable resources. Use the search and filter tools to narrow down specific skills.</p>
+          <button class="button" id="clearProgress" data-i18n="res_btn_reset">Reset All Saved Progress</button>
         </div>
         <div class="filters">
-          <input id="resourceSearch" type="search" placeholder="Search resources by tool, keyword, or phase..." />
-          <select id="phaseFilter"><option value="all">All Phases</option></select>
-          <select id="difficultyFilter"><option value="all">All Difficulties</option></select>
+          <input id="resourceSearch" type="search" placeholder="Search resources..." />
+          <select id="phaseFilter"><option value="all" id="opt-all-phases">All Phases</option></select>
+          <select id="difficultyFilter"><option value="all" id="opt-all-diff">All Difficulties</option></select>
         </div>
         <div id="resourceGrid" class="resource-grid"></div>
       </section>
@@ -475,51 +493,22 @@
       <!-- Certification Track -->
       <section id="cert-track">
         <div class="section-head">
-          <h2>Industry Certification Strategy</h2>
-          <p>Evaluating defensive security certifications based on technical rigor, hands-on relevance, and HR filtering utility.</p>
+          <h2 data-i18n="cert_title">Industry Certification Strategy</h2>
+          <p data-i18n="cert_desc">Evaluating defensive security certifications based on technical rigor, hands-on relevance, and HR filtering utility.</p>
         </div>
-        <div class="grid three">
-          <div class="card">
-            <h3><span class="cert-badge">CompTIA Security+</span></h3>
-            <p><strong>Status: OPTIONAL / HR-Filter Only</strong></p>
-            <p>Focuses primarily on security governance, risk management frameworks (NIST, ISO), and general engineering terminology. Highly optional. Only pursue this if targeting traditional enterprise sectors or government jobs that utilize automated HR screeners.</p>
-            <ul>
-              <li><strong>Format:</strong> Multiple-choice (theoretical)</li>
-              <li><strong>Approx. Cost:</strong> ~$400 USD</li>
-              <li><strong>Market Utility:</strong> Bypassing initial non-technical HR gatekeepers</li>
-            </ul>
-          </div>
-          <div class="card">
-            <h3><span class="cert-badge pro">BTL1 (Blue Team Level 1)</span></h3>
-            <p><strong>Status: HIGHLY RECOMMENDED (JOB TRIGGER)</strong></p>
-            <p>A rigorous, practical 24-hour examination that requires candidates to respond to simulated corporate security incident telemetry. It tests log parsing, incident investigation, and network triaging on a live cloud VM.</p>
-            <ul>
-              <li><strong>Format:</strong> 100% practical, hands-on lab assessment</li>
-              <li><strong>Approx. Cost:</strong> ~$500 USD (includes lifetime course access)</li>
-              <li><strong>Market Utility:</strong> Highly respected by SOC managers and incident response leads</li>
-            </ul>
-          </div>
-          <div class="card">
-            <h3><span class="cert-badge pro">HTB CDSA (Defensive Security Analyst)</span></h3>
-            <p><strong>Status: HIGHLY RECOMMENDED (JOB TRIGGER)</strong></p>
-            <p>An exhaustive, multi-day, practical exam requiring deep host analysis, forensic log parsing, and the development of high-fidelity detection rules against sophisticated threat actors.</p>
-            <ul>
-              <li><strong>Format:</strong> Deep, connected multi-day VM threat hunting lab</li>
-              <li><strong>Approx. Cost:</strong> ~$450 USD</li>
-              <li><strong>Market Utility:</strong> Gold standard for proving true technical depth to elite engineering teams</li>
-            </ul>
-          </div>
+        <div class="grid three" id="cert-grid">
+          <!-- Dynamically Rendered -->
         </div>
       </section>
 
       <!-- 104-Week Roadmap -->
       <section id="week-roadmap">
         <div class="section-head">
-          <h2>Comprehensive 104-Week Schedule</h2>
-          <p>A detailed 2-year structural roadmap designed to prevent burn-out. If studying full-time, the schedule can be safely compressed to 12 months.</p>
+          <h2 data-i18n="sched_title">Comprehensive 104-Week Schedule</h2>
+          <p data-i18n="sched_desc">A detailed 2-year structural roadmap designed to prevent burn-out. If studying full-time, the schedule can be safely compressed to 12 months.</p>
         </div>
         <div class="filters">
-          <input id="weekSearch" type="search" placeholder="Filter weeks (e.g., tcpdump, Wireshark, Splunk, Forensics)..." />
+          <input id="weekSearch" type="search" placeholder="Filter weeks..." />
         </div>
         <div id="weekTable" class="table-wrap"></div>
       </section>
@@ -527,8 +516,8 @@
       <!-- Portfolio Projects -->
       <section id="projects">
         <div class="section-head">
-          <h2>Structured Defensive Portfolio Projects</h2>
-          <p>Your GitHub repositories are your proof-of-competence. Each project here uses a formal engineering blueprint to present a clean, standardized, and professional look for technical recruiters.</p>
+          <h2 data-i18n="projects_title">Structured Defensive Portfolio Projects</h2>
+          <p data-i18n="projects_desc">Your GitHub repositories are your proof-of-competence. Each project here uses a formal engineering blueprint to present a clean, standardized, and professional look for technical recruiters.</p>
         </div>
         <div id="projectGrid" class="grid two"></div>
       </section>
@@ -536,278 +525,915 @@
       <!-- Competency Checklist -->
       <section id="checklist">
         <div class="section-head">
-          <h2>Objective & Observable Competency Checklist</h2>
-          <p>Mark these off only when you can complete the target task independently, under time pressure, and without looking at step-by-step documentation.</p>
+          <h2 data-i18n="chk_title">Objective & Observable Competency Checklist</h2>
+          <p data-i18n="chk_desc">Mark these off only when you can complete the target task independently, under time pressure, and without looking at step-by-step documentation.</p>
         </div>
         <div id="finalChecklist" class="grid two"></div>
       </section>
 
       <div class="footer">
-        <p><strong>Defensive Security Specialization Roadmap v2.0 - 2026.</strong> Analyze rigorously, document thoroughly, defend methodically.</p>
+        <p><strong id="footer-text">Defensive Security Specialization Roadmap v2.0 - 2026.</strong> Analyze rigorously, document thoroughly, defend methodically.</p>
       </div>
     </main>
   </div>
 
   <script>
-    // Initial Diagnostic Test Data
-    const diagnosticQuestions = [
-      {
-        q: "1. What is your proficiency level with command-line interfaces (Bash or PowerShell)?",
-        opts: [
-          { text: "None / Basic: I cannot navigate directories or use pipes (|) fluently.", code: "F0" },
-          { text: "Intermediate: I can chain commands, use filtering utilities (grep, Select-String), and write basic automation scripts.", code: "OK" }
-        ]
-      },
-      {
-        q: "2. How do you handle version control (Git and GitHub) on a regular basis?",
-        opts: [
-          { text: "I do not use it, or I only download ZIPs from the browser without using the CLI.", code: "F0" },
-          { text: "I know how to clone, branch, commit, resolve basic conflicts, and manage repositories via CLI.", code: "OK" }
-        ]
-      },
-      {
-        q: "3. Do you have experience setting up isolated virtual environments and operating systems?",
-        opts: [
-          { text: "I haven't worked with hypervisors, or I don't know how to configure virtual network adapters (NAT, Host-Only) to connect VMs.", code: "F0" },
-          { text: "I have configured home/lab environments before and understand virtual resource allocation and networking.", code: "OK" }
-        ]
-      }
-    ];
-
+    // --- STATE MANAGEMENT ---
+    let currentLang = localStorage.getItem("bt_selected_lang") || "es";
     let currentDiagIndex = 0;
     let diagResults = [];
 
-    function renderDiagnostic() {
-      const qText = document.getElementById("diag-q-text");
-      const optContainer = document.getElementById("diag-options");
-      const resContainer = document.getElementById("diag-res");
-      
-      if (currentDiagIndex < diagnosticQuestions.length) {
-        const item = diagnosticQuestions[currentDiagIndex];
-        qText.innerText = `Question ${currentDiagIndex + 1} of ${diagnosticQuestions.length}: ${item.q}`;
-        optContainer.innerHTML = "";
-        resContainer.style.display = "none";
+    // --- I18N DICTIONARY FOR STATIC TEXTS ---
+    const translations = {
+      es: {
+        brand_title: "Elite Blue Team",
+        brand_sub: "Ruta de Especialización v2.0",
+        sidebar_note: "Esfuerzo estimado: 15-20 horas/semana. Tu progreso se guarda automáticamente.",
+        nav_dashboard: "Dashboard",
+        nav_diagnostic: "Evaluación Inicial",
+        nav_weekly_method: "Método Semanal",
+        nav_curriculum_map: "Plan Curricular",
+        nav_phases: "Fases Técnicas",
+        nav_resources: "Librería de Recursos",
+        nav_cert_track: "Ruta de Certificación",
+        nav_week_roadmap: "Cronograma Semanal",
+        nav_projects: "Proyectos de Portafolio",
+        nav_checklist: "Checklist Observable",
+        hero_eyebrow: "Ruta de Ingeniería Defensiva (v2.0 - 2026)",
+        hero_title: "Especialización Profesional en Ciberseguridad Defensiva",
+        hero_lead: "Una hoja de ruta técnica y rigurosa diseñada exclusivamente para el análisis y defensa de entornos modernos. Se prioriza el desarrollo de la lógica de detección, el análisis detallado de tráfico, el examen profundo de sistemas y el monitoreo de infraestructura en la nube.",
+        pill_focus: "Foco: Telemetría Práctica",
+        pill_soc: "Operaciones SOC",
+        pill_cloud: "Redes y Nube Profunda",
+        pill_dfir: "DFIR (Forense Digital)",
+        pill_solving: "Resolución Analítica",
+        stat_phases: "Fases técnicas de estudio progresivo",
+        stat_weeks: "Semanas de preparación estructuradas",
+        stat_projects: "Proyectos robustos de portafolio",
+        stat_certs: "Certificaciones de alto retorno técnico",
+        
+        // Fast-Track Banner
+        ft_title: "🛡️ ESTRATEGIA DE SALIDA RÁPIDA AL MERCADO LABORAL (CONTRATACIÓN TEMPRANA)",
+        ft_desc: "<strong>Truco del Sector: No necesitas completar los 2 años del plan para conseguir trabajo.</strong> La mayoría de líderes de equipos SOC valoran mucho más tu destreza práctica con redes y análisis de logs que la profundidad académica. Al alcanzar el hito que ves debajo, estás listo para postularte a puestos de Analista SOC Junior mientras terminas las fases restantes.",
+        ft_step1_title: "1. Completa Fase 0, 1 y 2",
+        ft_step1_desc: "Consolida tus bases de automatización de scripts, intercepta y analiza paquetes con tcpdump/Wireshark y domina búsquedas complejas en Splunk/Elastic.",
+        ft_step2_title: "2. Publica Proyectos 1, 2 y 4",
+        ft_step2_desc: "Tu GitHub debe hospedar tu script de telemetría de endpoints, tu reporte forense de inspección PCAP y tu despliegue centralizado del SIEM Splunk.",
+        ft_step3_title: "3. Aprueba BTL1 o CDSA",
+        ft_step3_desc: "Consigue la certificación Blue Team Level 1 o HTB Certified Defensive Security Analyst. Esto validará al 100% tus habilidades operativas ante los reclutadores.",
 
-        item.opts.forEach((opt, idx) => {
-          const div = el("div", { class: "diagnostic-option" });
-          div.innerHTML = `<input type="radio" name="diag-opt" id="opt-${idx}" value="${opt.code}" /> <label for="opt-${idx}">${opt.text}</label>`;
-          div.addEventListener("click", () => {
-            document.getElementById(`opt-${idx}`).checked = true;
-            setTimeout(() => {
-              diagResults.push(opt.code);
-              currentDiagIndex++;
-              renderDiagnostic();
-            }, 300);
-          });
-          optContainer.appendChild(div);
-        });
-      } else {
-        // End of test
-        qText.innerText = "Assessment Complete";
-        optContainer.innerHTML = "";
-        resContainer.style.display = "block";
+        // Section Headers
+        diag_section_title: "Evaluación Diagnóstica Inicial",
+        diag_section_desc: "Responde este breve cuestionario para comprobar si cuentas con la base técnica sugerida para iniciar directo en la Fase 1 o si es ideal cursar la Fase 0.",
+        wm_title: "Estructura de Estudio Semanal",
+        wm_desc: "La ciberseguridad defensiva es una disciplina empírica y práctica. El tiempo debe dividirse de forma balanceada para maximizar la asimilación conceptual.",
+        wm_alloc_title: "Distribución Metodológica del Tiempo",
+        wm_sched_title: "Agenda Operativa Recomendada",
+        cmap_title: "Plan de Desarrollo de Competencias",
+        cmap_desc: "La progresión está diseñada para dotar al estudiante de herramientas robustas, incrementando el nivel de abstracción en cada fase.",
+        phases_title: "Fases Técnicas de la Ruta Académica",
+        phases_desc: "Cada fase cuenta con objetivos específicos que deben ser demostrados mediante entregables prácticos validados.",
+        res_title: "Librería de Recursos Seleccionados",
+        res_desc: "Conjunto de recursos académicos técnicos de acceso libre o auditable. Utiliza los filtros para facilitar la búsqueda.",
+        res_btn_reset: "Restablecer progreso guardado",
+        res_search_ph: "Filtrar por herramienta, concepto, protocolo...",
+        res_all_phases: "Todas las fases",
+        res_all_diffs: "Todas las dificultades",
+        cert_title: "Ruta de Validación Externa (Certificaciones)",
+        cert_desc: "Evaluación de credenciales recomendadas en la industria según su retorno técnico y reconocimiento en filtros de selección.",
+        sched_title: "Planificador Detallado de Ruta de 104 Semanas",
+        sched_desc: "Cronograma técnico de preparación de 2 años. Puede comprimirse a 12 meses si se duplica la dedicación horaria semanal.",
+        sched_search_ph: "Buscar semanas por término (ej. tcpdump, Wireshark, RAM, Forense)...",
+        projects_title: "Portafolio de Ingeniería Defensiva (Proyectos Estructurados)",
+        projects_desc: "Tus proyectos de GitHub son la prueba objetiva de tu conocimiento. Se detallan con rigor metodológico para garantizar un formato profesional uniforme en las entrevistas.",
+        chk_title: "Verificación de Competencias Operacionales (Medible y Observable)",
+        chk_desc: "Marca estas casillas solo si eres capaz de realizar la acción de forma autónoma, cronometrada y bajo presión sin consultar guías paso a paso.",
+        footer_text: "Plan de Especialización en Seguridad Defensiva v2.0 - 2026. Analiza con rigor, documenta con precisión, defiende con método.",
         
-        const needsPhase0 = diagResults.includes("F0");
-        if (needsPhase0) {
-          resContainer.className = "diagnostic-result warning";
-          resContainer.innerHTML = "<strong>Recommendation: Step 0 is Required</strong><br/>Your baseline indicates a need to solidify system administration, CLI usage, and version control before stepping into the rigorous network inspection of Phase 1. Completing Phase 0 first will guarantee technical success.";
-        } else {
-          resContainer.className = "diagnostic-result success";
-          resContainer.innerHTML = "<strong>Recommendation: Direct Phase 1 Entry Approved</strong><br/>You possess the system, CLI, and virtualization skills recommended to dive straight into Phase 1 (Networking and Network Telemetry). You can start the roadmap directly from there!";
-        }
+        // Console texts
+        toast_header: "🛡️ CONSOLA:",
+        toast_reset_msg: "Se ha reiniciado tu progreso local.",
+        toast_save_resource: "Progreso guardado: Recurso completado 🛡️",
+        toast_save_chk: "Competencia registrada como dominada con éxito 🎖️",
+
+        // Table headers
+        th_activity: "Actividad",
+        th_hours: "Horas/Semana",
+        th_obj: "Objetivo Operativo",
+        th_day: "Día",
+        th_sched_act: "Actividad Planificada",
+        th_level: "Nivel Académico",
+        th_cur_phase: "Fase Curricular",
+        th_foco: "Foco Operacional",
+        th_ecosystem: "Ecosistema Técnico",
+        th_week: "Semana",
+        th_tools: "Herramientas clave",
+        th_action: "Recomendación Técnica",
+        th_deliverable: "Entregable Requerido"
+      },
+      en: {
+        brand_title: "Elite Blue Team",
+        brand_sub: "Technical Roadmap v2.0",
+        sidebar_note: "Estimated workload: 15-20 hours/week. Your progress is saved automatically.",
+        nav_dashboard: "Dashboard",
+        nav_diagnostic: "Initial Assessment",
+        nav_weekly_method: "Weekly Methodology",
+        nav_curriculum_map: "Curriculum Map",
+        nav_phases: "Technical Phases",
+        nav_resources: "Resource Library",
+        nav_cert_track: "Certification Track",
+        nav_week_roadmap: "Weekly Schedule",
+        nav_projects: "Portfolio Projects",
+        nav_checklist: "Observable Checklist",
+        hero_eyebrow: "Defensive Engineering Roadmap (v2.0 - 2026)",
+        hero_title: "Professional Specialization in Defensive Cybersecurity",
+        hero_lead: "A rigorous, technical self-directed curriculum designed exclusively for analyzing and defending modern environments. Priority is placed on building solid detection logic, deep traffic analysis, host system security, and cloud-native monitoring.",
+        pill_focus: "Focus: Practical Telemetry Skills",
+        pill_soc: "SOC Operations",
+        pill_cloud: "Deep Cloud & Networks",
+        pill_dfir: "DFIR (Forensics)",
+        pill_solving: "Analytical Problem Solving",
+        stat_phases: "Sequential technical phases of learning",
+        stat_weeks: "Structured weeks of technical prep",
+        stat_projects: "Rigorous portfolio-grade projects",
+        stat_certs: "High-ROI external industry certs",
         
-        const resetBtn = el("button", { class: "button", html: "Restart Assessment", style: "margin-top: 15px;" });
-        resetBtn.addEventListener("click", () => {
-          currentDiagIndex = 0;
-          diagResults = [];
-          renderDiagnostic();
-        });
-        resContainer.appendChild(resetBtn);
+        // Fast-Track Banner
+        ft_title: "🛡️ FAST-TRACK EMPLOYMENT EXIT STRATEGY (EARLY HIRED)",
+        ft_desc: "<strong>Industry Hack: You do not need to finish this entire 2-year curriculum to land your first job.</strong> Most modern SOC (Security Operations Center) managers care infinitely more about your practical command of networks and telemetry over academic depth. Once you reach the exit benchmark below, you are technically ready to start applying for Junior SOC positions while finishing the remaining phases on the job.",
+        ft_step1_title: "1. Complete Phase 0, 1 & 2",
+        ft_step1_desc: "Ensure you have baseline automation skills, can dissect malicious packets via tcpdump/Wireshark, and write functional Splunk/Elastic queries.",
+        ft_step2_title: "2. Publish Projects 1, 2 & 4",
+        ft_step2_desc: "Your GitHub must host a local telemetry installation script, a detailed packet dissection forensic report, and a containerized Splunk SIEM configuration.",
+        ft_step3_title: "3. Pass BTL1 or CDSA",
+        ft_step3_desc: "Secure either the Blue Team Level 1 or HTB Certified Defensive Security Analyst. This completely validates your hand-on ability to technical leads.",
+
+        // Section Headers
+        diag_section_title: "Initial Diagnostics Test",
+        diag_section_desc: "Complete this brief self-assessment to determine if your baseline IT and computing skills are sufficient to start directly at Phase 1, or if completing Phase 0 is highly recommended.",
+        wm_title: "Weekly Study Allocation Strategy",
+        wm_desc: "Defensive cybersecurity is an empirical, hands-on discipline. Study hours must be balanced carefully to maximize conceptual retention and command-line agility.",
+        wm_alloc_title: "Weekly Time Allocation (15-20 Hours)",
+        wm_sched_title: "Suggested Weekly Schedule Pattern",
+        cmap_title: "Defensive Competency Curriculum Map",
+        cmap_desc: "This progressive track builds your core engineering competencies, steadily increasing the abstraction level as you advance.",
+        phases_title: "Technical Phase Specifications",
+        phases_desc: "Each phase requires the completion and verification of distinct, documented hands-on deliverables.",
+        res_title: "High-Value Auditable Resource Library",
+        res_desc: "Curated list of technical, free, or auditable resources. Use the search and filter tools to narrow down specific skills.",
+        res_btn_reset: "Reset All Saved Progress",
+        res_search_ph: "Search resources by tool, keyword, or phase...",
+        res_all_phases: "All Phases",
+        res_all_diffs: "All Difficulties",
+        cert_title: "Industry Certification Strategy",
+        cert_desc: "Evaluating defensive security certifications based on technical rigor, hands-on relevance, and HR filtering utility.",
+        sched_title: "Comprehensive 104-Week Schedule",
+        sched_desc: "A detailed 2-year structural roadmap designed to prevent burn-out. If studying full-time, the schedule can be safely compressed to 12 months.",
+        sched_search_ph: "Filter weeks (e.g., tcpdump, Wireshark, Splunk, Forensics)...",
+        projects_title: "Structured Defensive Portfolio Projects",
+        projects_desc: "Your GitHub repositories are your proof-of-competence. Each project here uses a formal engineering blueprint to present a clean, standardized, and professional look for technical recruiters.",
+        chk_title: "Objective & Observable Competency Checklist",
+        chk_desc: "Mark these off only when you can complete the target task independently, under time pressure, and without looking at step-by-step documentation.",
+        footer_text: "Defensive Security Specialization Roadmap v2.0 - 2026. Analyze rigorously, document thoroughly, defend methodically.",
+        
+        // Console texts
+        toast_header: "🛡️ CONSOLE:",
+        toast_reset_msg: "Your local progress has been successfully reset.",
+        toast_save_resource: "Progress saved: Resource completed 🛡️",
+        toast_save_chk: "Competency marked as mastered successfully 🎖️",
+
+        // Table headers
+        th_activity: "Activity Type",
+        th_hours: "Hours/Week",
+        th_obj: "Operational Objective",
+        th_day: "Day",
+        th_sched_act: "Planned Activity",
+        th_level: "Academic Level",
+        th_cur_phase: "Curricular Phase",
+        th_foco: "Operational Focus",
+        th_ecosystem: "Technical Ecosystem",
+        th_week: "Week",
+        th_tools: "Tools & Resources",
+        th_action: "Suggested Weekly Action",
+        th_deliverable: "Required Output"
       }
-    }
+    };
 
-    // Technical Phase Specifications Data
+    // --- BILINGUAL DATA OBJECTS ---
+    const diagnosticQuestions = [
+      {
+        q: {
+          es: "1. ¿Qué nivel de solidez posees manejando terminales de comandos (Bash o PowerShell)?",
+          en: "1. What is your proficiency level with command-line interfaces (Bash or PowerShell)?"
+        },
+        opts: [
+          {
+            text: {
+              es: "Nulo o básico: No sé navegar por directorios o usar pipes (|) de forma fluida.",
+              en: "None / Basic: I cannot navigate directories or use pipes (|) fluently."
+            },
+            code: "F0"
+          },
+          {
+            text: {
+              es: "Intermedio: Puedo concatenar comandos, usar filtros (grep, Select-String) y estructurar scripts de automatización sencillos.",
+              en: "Intermediate: I can chain commands, use filtering utilities (grep, Select-String), and write basic automation scripts."
+            },
+            code: "OK"
+          }
+        ]
+      },
+      {
+        q: {
+          es: "2. ¿Cómo manejas el control de versiones (Git y GitHub) de forma habitual?",
+          en: "2. How do you handle version control (Git and GitHub) on a regular basis?"
+        },
+        opts: [
+          {
+            text: {
+              es: "No lo uso, o solo lo uso descargando ZIPs desde el navegador sin usar la consola.",
+              en: "I do not use it, or I only download ZIPs from the browser without using the CLI."
+            },
+            code: "F0"
+          },
+          {
+            text: {
+              es: "Sé clonar, crear ramas, realizar commits, resolver conflictos básicos y gestionar repositorios mediante CLI.",
+              en: "I know how to clone, branch, commit, resolve basic conflicts, and manage repositories via CLI."
+            },
+            code: "OK"
+          }
+        ]
+      },
+      {
+        q: {
+          es: "3. ¿Tienes experiencia configurando entornos virtuales aislados y sistemas operativos?",
+          en: "3. Do you have experience setting up isolated virtual environments and operating systems?"
+        },
+        opts: [
+          {
+            text: {
+              es: "No he trabajado con hipervisores o no sé configurar adaptadores de red (NAT, Host-Only) para comunicar máquinas.",
+              en: "I haven't worked with hypervisors, or I don't know how to configure virtual network adapters (NAT, Host-Only) to connect VMs."
+            },
+            code: "F0"
+          },
+          {
+            text: {
+              es: "Tengo laboratorios configurados previamente y comprendo la asignación de recursos y redes virtuales.",
+              en: "I have configured home/lab environments before and understand virtual resource allocation and networking."
+            },
+            code: "OK"
+          }
+        ]
+      }
+    ];
+
+    const staticTablesData = {
+      allocation: [
+        { activity: { es: "Estudio Conceptual", en: "Conceptual Study" }, hours: "4-5", obj: { es: "Modelado de protocolos, lectura de estándares (RFC, NIST) y mecanismos de ataque.", en: "Modeling protocol behaviors, reading security standards (RFC, NIST), and dissecting threat vectors." } },
+        { activity: { es: "Laboratorios Técnicos", en: "Hands-On Labs" }, hours: "6-8", obj: { es: "Resolución de salas en entornos controlados, simulación de tráfico y forense.", en: "Working through sandboxed systems, simulated exploits, packet traces, and forensic targets." } },
+        { activity: { es: "Documentación y Reportes", en: "Documentation & Reporting" }, hours: "3-4", obj: { es: "Escribir análisis forenses, documentar anomalías encontradas e indicadores.", en: "Drafting defensive case write-ups, detailing forensic timelines, and cataloging indicators." } },
+        { activity: { es: "Portafolio y Publicación", en: "Portfolio Management" }, hours: "2-3", obj: { es: "Estructuración de entregables en repositorios locales y de control de versiones.", en: "Publishing validated code, scripts, and logs to local and remote repositories (GitHub)." } }
+      ],
+      schedule: [
+        { day: { es: "Día 1", en: "Day 1" }, act: { es: "Lectura teórica de protocolos y flujo lógico del tema asignado.", en: "Read core technical theory, analyze system/network protocol states, and take structured notes." } },
+        { day: { es: "Día 2", en: "Day 2" }, act: { es: "Laboratorio guiado en entorno controlado para verificar configuraciones e identificar eventos.", en: "Execute a guided virtual lab to inspect normal states vs. target exploit behaviors." } },
+        { day: { es: "Día 3", en: "Day 3" }, act: { es: "Análisis libre en escenario ciego (reconstruir infección o interceptar tráfico).", en: "Engage in an unguided sandbox challenge (e.g., reconstruct an infection or packet trace)." } },
+        { day: { es: "Día 4", en: "Day 4" }, act: { es: "Elaboración del informe técnico con capturas de evidencia, timelines e IoCs.", en: "Write a professional-grade technical report with screenshots, timelines, and verified IoCs." } },
+        { day: { es: "Día 5", en: "Day 5" }, act: { es: "Subida a control de versiones (Git), resolución de falsos positivos y revisión en Anki.", en: "Commit artifacts to Git, analyze and troubleshoot rules to reduce false positives, and run Anki." } }
+      ],
+      curriculum: [
+        { lvl: { es: "Nivelación", en: "Baseline Nivelation" }, phase: { es: "Fase 0: Fundamentos y IT Básica", en: "Phase 0: IT & Systems Fundamentals" }, focus: { es: "Establecer las bases operativas informáticas y de automatización.", en: "Establishing baseline system and shell management, automation, and virtual hosting environments." }, tech: "Git, GitHub, Markdown, VirtualBox, Terminal CLI" },
+        { lvl: { es: "Junior Técnico", en: "Technical Junior" }, phase: { es: "Fase 1: Redes y Telemetría de Red", en: "Phase 1: Networking & Network Telemetry" }, focus: { es: "Análisis profundo de tráfico de datos, topologías y seguridad de red.", en: "In-depth packet capture, protocol modeling, routing topologies, and perimeter defense systems." }, tech: "Wireshark, tcpdump, Packet Tracer, GNS3, Suricata, Snort" },
+        { lvl: { es: "SOC Associate", en: "SOC Associate" }, phase: { es: "Fase 2: Endpoint y Telemetría Cloud", en: "Phase 2: Endpoint & Cloud Telemetry" }, focus: { es: "Análisis sistemático de telemetría de endpoints, servicios cloud y detección.", en: "Systematic host/cloud audit configurations, API logs, SIEM querying, and detection engineering." }, tech: "Event Viewer, Sysmon, AWS CloudTrail, Splunk, Elastic, Sigma" },
+        { lvl: { es: "DFIR Specialist", en: "DFIR Specialist" }, phase: { es: "Fase 3: Forense Digital e Incidentes", en: "Phase 3: Digital Forensics & IR" }, focus: { es: "Investigación forense en profundidad de discos, memoria RAM y malware.", en: "Deep post-exploitation investigation across memory, persistent disk storage, and simple malware behavior." }, tech: "Autopsy, Volatility 3, FTK Imager, Sandboxes (PE/scripts)" },
+        { lvl: { es: "Enterprise Architect", en: "Enterprise Architect" }, phase: { es: "Fase 4: AD y Defensa Cloud", en: "Phase 4: Active Directory & Cloud Defense" }, focus: { es: "Hardening y monitorización defensiva en entornos empresariales e identidad cloud.", en: "Securing corporate AD forests, parsing domain-level exploit logs, and managing IAM/telemetry in public cloud infrastructures." }, tech: "Active Directory, Group Policies, AWS, IAM, Azure Sentinel" },
+        { lvl: { es: "Elite Defender", en: "Elite Defender" }, phase: { es: "Fase 5: Consolidación y Portafolio", en: "Phase 5: Consolidation & Portfolio" }, focus: { es: "Preparación técnica avanzada para entrevistas y validación de habilidades.", en: "Refining structured project outputs, polishing write-ups, and building high-impact community profiles." }, tech: "GitHub profesional, write-ups estructurados, CyberDefenders" }
+      ]
+    };
+
     const phases = [
       {
-        id: "phase-0", name: "Phase 0: Environment Setup & IT Foundations", duration: "1-2 Months", goal: "Establish the operational computing baseline: light scripting automation, CLI version control, standardized markdown technical writing, and local hypervisor virtual networking.", rows: [
-          ["0.1", "Basic System Administration", "Recursive directory navigation, system permissions, stdin/stdout/stderr redirect pipes, Windows Registry basics, and host process trees.", "Linux Journey, CMD/PowerShell Reference Docs", "3 Weeks", "None", "Documented shell script to track disk space thresholds & generate alert logs", "Manipulate Linux and Windows file structures strictly from a headless command-line interface."],
-          ["0.2", "Version Control & Git", "CLI Git operations, writing atomic commits, branching, merging, conflict resolution, and remote syncing with GitHub. Structuring documentation with standard Markdown.", "Pro Git Book (Ch. 1-3), GitHub Skills Guide", "2 Weeks", "Basic Systems", "Curated Markdown study portfolio mapped on a public GitHub repo", "Commit and sync study artifacts via CLI cleanly without relying on web GUI tools."],
-          ["0.3", "Hypervisor Virtualization", "Creating isolated hypervisor environments, configuring Host-Only, NAT, and Bridged virtual adapters to establish secure local lab networks.", "VirtualBox / VMware Player Manuals", "1 Week", "Basic Systems", "Communicate two virtual machines successfully over a host-only virtual network", "Explain the technical routing differences between a Bridged and NAT virtual network adapter."]
+        id: "phase-0",
+        name: { es: "Fase 0: Nivelación y Fundamentos de IT", en: "Phase 0: Environment Setup & IT Foundations" },
+        duration: { es: "1-2 meses", en: "1-2 Months" },
+        goal: { 
+          es: "Establecer la base operativa informática: automatización ligera, control de versiones, formato técnico de reporte y gestión de redes virtuales para laboratorios seguros.",
+          en: "Establish the operational computing baseline: light scripting automation, CLI version control, standardized markdown technical writing, and local hypervisor virtual networking." 
+        },
+        rows: [
+          ["0.1", { es: "Administración de Sistemas Inicial", en: "Basic System Administration" }, { es: "Navegación recursiva, permisos de ficheros Unix, redirecciones y pipelines (stdin, stdout, stderr). Entendimiento inicial del registro de Windows y árbol de procesos.", en: "Recursive directory navigation, system permissions, stdin/stdout/stderr redirect pipes, Windows Registry basics, and host process trees." }, "Linux Journey, CMD/PowerShell Reference Docs", { es: "3 semanas", en: "3 Weeks" }, { es: "Ninguno", en: "None" }, { es: "Script documentado en shell de control de espacio y alertas de consumo", en: "Documented shell script to track disk space thresholds & generate alert logs" }, { es: "Manipulas el sistema de ficheros de Linux y Windows exclusivamente desde consola.", en: "Manipulate Linux and Windows file structures strictly from a headless command-line interface." }],
+          ["0.2", { es: "Control de Versiones y Documentación", en: "Version Control & Git" }, { es: "Uso de Git por consola, commits atómicos, control de ramas, fusiones, subida a repositorios de GitHub. Redacción técnica usando el estándar Markdown.", en: "CLI Git operations, writing atomic commits, branching, merging, conflict resolution, and remote syncing with GitHub. Structuring documentation with standard Markdown." }, "Pro Git Book (Caps 1-3), GitHub Skills Guide", { es: "2 semanas", en: "2 Weeks" }, { es: "Sistemas Básicos", en: "Basic Systems" }, { es: "Portafolio público de estudio en GitHub estructurado en Markdown", en: "Curated Markdown study portfolio mapped on a public GitHub repo" }, { es: "Sincronizas tus entregables mediante Git sin cometer errores de conflictos o subidas incorrectas.", en: "Commit and sync study artifacts via CLI cleanly without relying on web GUI tools." }],
+          ["0.3", { es: "Virtualización de Entornos", en: "Hypervisor Virtualization" }, { es: "Creación de laboratorios aislados seguros, configuración de redes Host-Only, NAT Networks y adaptadores puente en entornos de hipervisores.", en: "Creating isolated hypervisor environments, configuring Host-Only, NAT, and Bridged virtual adapters to establish secure local lab networks." }, "VirtualBox / VMware Player Manuals", { es: "1 semana", en: "1 Week" }, { es: "Sistemas Básicos", en: "Basic Systems" }, { es: "Comunicación verificada de dos MV en red interna", en: "Communicate two virtual machines successfully over a host-only virtual network" }, { es: "Explicas la diferencia entre direccionamiento NAT y un puente virtualizado de red.", en: "Explain the technical routing differences between a Bridged and NAT virtual network adapter." }]
         ]
       },
       {
-        id: "phase-1", name: "Phase 1: Networking & Network Telemetry (Deep Dive)", duration: "3-4 Months", goal: "Understand low-level data transmission across the TCP/IP stack, master headless network captures, and analyze multi-layered protocol communication.", rows: [
-          ["1.1", "Corporate Networking Foundations", "Deep study of the TCP/IP model, CIDR notation, subnetting, DNS resolution, DHCP handshakes, ARP cache, HTTP/S headers, SMB, and TLS handshake structures.", "Cisco Skills for All: Network Defense", "5 Weeks", "Phase 0", "Topological schematic of a secure enterprise subnet layout", "Explain step-by-step packet transitions when a client resolves DNS and queries an external server over HTTP."],
-          ["1.2", "Headless Packet Captures", "Managing live network captures over command line via tcpdump, writing complex Berkeley Packet Filters (BPF), and configuring log rotating PCAP files.", "tcpdump manual, interactive command labs", "3 Weeks", "Networking Foundations", "Shell automated tcpdump script logging anomalous non-standard DNS queries", "Isolate specific target traffic streams from a live network interface strictly using CLI utilities."],
-          ["1.3", "Wireshark Dissection", "Analyzing protocol handshakes, isolating streams, rebuilding binary file payloads from packet data, parsing malformed packets, and tracking persistence indicators.", "Chris Greer (Wireshark Mastery), THM Wireshark Rooms", "4 Weeks", "Phase 1.2", "Comprehensive technical packet dissection report of a simulated network intrusion (PCAP)", "Identify malicious ARP spoofing, directory traversal scans, and data exfiltrations in Wireshark without guidance."],
-          ["1.4", "Defensive Perimeters & IDS/IPS", "Firewall operational modes and rule engineering. Deploying passive network monitoring solutions and parsing intrusion detection alerts.", "Suricata / Snort Manuals, Zeek Network Analysis", "4 Weeks", "Phase 1.3", "Custom Suricata alert ruleset targeting abnormal protocol states", "Translate newly disclosed threat indicators into active, functional IDS/IPS signature rules."]
+        id: "phase-1",
+        name: { es: "Fase 1: Redes y Telemetría de Red (Networking Profundo)", en: "Phase 1: Networking & Network Telemetry (Deep Dive)" },
+        duration: { es: "3-4 meses", en: "3-4 Months" },
+        goal: {
+          es: "Comprender la transmisión de datos a bajo nivel en la pila TCP/IP, dominar la captura en tiempo real e interpretar la telemetría de red.",
+          en: "Understand low-level data transmission across the TCP/IP stack, master headless network captures, and analyze multi-layered protocol communication."
+        },
+        rows: [
+          ["1.1", { es: "Fundamentos de Redes Corporativas", en: "Corporate Networking Foundations" }, { es: "Estudio exhaustivo del modelo TCP/IP, direccionamiento CIDR, subnetting estructurado, mapeo de protocolos DHCP, DNS, ARP, HTTP, SMB y TLS.", en: "Deep study of the TCP/IP model, CIDR notation, subnetting, DNS resolution, DHCP handshakes, ARP cache, HTTP/S headers, SMB, and TLS handshake structures." }, "Cisco Skills for All: Network Defense", { es: "5 semanas", en: "5 Weeks" }, { es: "Fase 0", en: "Phase 0" }, { es: "Topología de red corporativa simulada", en: "Topological schematic of a secure enterprise subnet layout" }, { es: "Explicas el flujo exacto (paquete por paquete) del tráfico DNS y HTTP ante un cliente nuevo.", en: "Explain step-by-step packet transitions when a client resolves DNS and queries an external server over HTTP." }],
+          ["1.2", { es: "Captura de Paquetes en Consola", en: "Headless Packet Captures" }, { es: "Ejecución de capturas sin interfaz gráfica mediante tcpdump, aplicando expresiones de filtrado complejas (BPF) y rotación de volcados (PCAP).", en: "Managing live network captures over command line via tcpdump, writing complex Berkeley Packet Filters (BPF), and configuring log rotating PCAP files." }, "tcpdump manual, interactive command labs", { es: "3 semanas", en: "3 Weeks" }, { es: "Redes Básicas", en: "Networking Foundations" }, { es: "Script de captura automatizado por tcpdump filtrando anomalías DNS", en: "Shell automated tcpdump script logging anomalous non-standard DNS queries" }, { es: "Aislas flujos específicos utilizando exclusivamente herramientas de terminal.", en: "Isolate specific target traffic streams from a live network interface strictly using CLI utilities." }],
+          ["1.3", { es: "Análisis y Reconstrucción en Wireshark", en: "Wireshark Dissection" }, { es: "Inspección de anomalías, filtrado avanzado de protocolos, extracción de objetos binarios, análisis de flujos TCP maliciosos e identificación de técnicas de persistencia de red.", en: "Analyzing protocol handshakes, isolating streams, rebuilding binary file payloads from packet data, parsing malformed packets, and tracking persistence indicators." }, "Chris Greer (Wireshark Mastery), THM Wireshark Rooms", { es: "4 semanas", en: "4 Weeks" }, { es: "Fase 1.2", en: "Phase 1.2" }, { es: "Write-up estructurado de análisis de un tráfico de intrusión (PCAP)", en: "Comprehensive technical packet dissection report of a simulated network intrusion (PCAP)" }, { es: "Identificas envenenamiento ARP, escaneos de puertos y exfiltraciones de datos desde Wireshark sin asistencia.", en: "Identify malicious ARP spoofing, directory traversal scans, and data exfiltrations in Wireshark without guidance." }],
+          ["1.4", { es: "Defensa de Red e IDS/IPS", en: "Defensive Perimeters & IDS/IPS" }, { es: "Arquitectura de Firewalls y reglas operativas. Introducción al monitoreo pasivo de red y despliegue de firmas de detección de intrusiones.", en: "Firewall operational modes and rule engineering. Deploying passive network monitoring solutions and parsing intrusion detection alerts." }, "Suricata / Snort Manuals, Zeek Network Analysis", { es: "4 semanas", en: "4 Weeks" }, { es: "Fase 1.3", en: "Phase 1.3" }, { es: "Conjunto de firmas Snort/Suricata funcionales para tráfico anómalo", en: "Custom Suricata alert ruleset targeting abnormal protocol states" }, { es: "Traduces firmas de patrones maliciosos conocidos en reglas de detección operativas.", en: "Translate newly disclosed threat indicators into active, functional IDS/IPS signature rules." }]
         ]
       },
       {
-        id: "phase-2", name: "Phase 2: Endpoint & Cloud Telemetry Ingestion (SOC Ops)", duration: "3-4 Months", goal: "Audit OS-level endpoint events, ingest cloud telemetry logs (AWS CloudTrail, Azure Monitor), centralize log feeds, and develop high-fidelity alert correlations.", rows: [
-          ["2.1", "Endpoint Audit Telemetry", "Local logging configurations. Windows GPO auditing policies (Security, System, Application), Linux syslog configurations (auth.log), and deploying Microsoft Sysmon.", "Sysmon Docs (SwiftOnSecurity Config), Event Viewer Manual", "4 Weeks", "Phase 0 & Phase 1", "Local endpoint Sysmon configuration deploying custom event filters", "Identify process injections and anomalous cmd executions by correlating process creation event IDs (ID 1, 3, 11)."],
-          ["2.2", "Cloud Telemetry & Log Ingestion", "Understanding cloud-specific logging architectures: AWS CloudTrail, VPC Flow Logs, and Azure Activity Logs. Centralizing diverse API inputs.", "AWS CloudTrail Docs, Azure Logs Sandbox", "3 Weeks", "Phase 1.1", "Cloud log ingestion flow diagram and parser script", "Explain the difference between control-plane API audit events and data-plane resource-level logs in AWS."],
-          ["2.3", "SIEM Engineering & Analytics", "Configuring Splunk Enterprise or Elastic Stack. Writing advanced search queries (Splunk SPL / Elastic KQL) to audit host, network, and cloud data feeds.", "Splunk Enterprise Training, Elastic Path", "5 Weeks", "Phase 2.2", "Operational SIEM dashboard correlating threat scenarios from event logs", "Build an analytics query linking a web exploitation event to a subsequent local process execution on the host."],
-          ["2.4", "Platform-Agnostic Detection Rules", "Drafting system detection rules using Sigma syntax. Analyzing volatile memory and tracking threat binaries in-memory using Yara rules.", "Sigma Standard Docs, Yara Rules Guide", "4 Weeks", "Phase 2.3", "GitHub repository of custom Sigma alert rules validated with live audit telemetry", "Write alert signatures targeting LSASS credential dump attempts while minimizing false positives from normal system noise."]
+        id: "phase-2",
+        name: { es: "Fase 2: Telemetría de Host y Nube (Operaciones SOC)", en: "Phase 2: Endpoint & Cloud Telemetry Ingestion (SOC Ops)" },
+        duration: { es: "3-4 meses", en: "3-4 Months" },
+        goal: {
+          es: "Aprender a auditar los eventos ocurridos en endpoints, ingerir logs en la nube (AWS CloudTrail, Azure) y centralizar alertas en el SIEM.",
+          en: "Audit OS-level endpoint events, ingest cloud telemetry logs (AWS CloudTrail, Azure Monitor), centralize log feeds, and develop high-fidelity alert correlations."
+        },
+        rows: [
+          ["2.1", { es: "Telemetría de Sistema (Endpoints)", en: "Endpoint Audit Telemetry" }, { es: "Configuración avanzada de logs en Windows Server e implementación de Microsoft Sysmon para auditar ejecuciones, modificaciones de registro y memoria.", en: "Local logging configurations. Windows GPO auditing policies (Security, System, Application), Linux syslog configurations (auth.log), and deploying Microsoft Sysmon." }, "Sysmon Docs (SwiftOnSecurity Config)", { es: "4 semanas", en: "4 Weeks" }, { es: "Fase 0 y Fase 1", en: "Phase 0 & 1" }, { es: "Estructuración local de Sysmon + logs centralizados", en: "Local endpoint Sysmon configuration deploying custom event filters" }, { es: "Identificas inyecciones de código localizando el Event ID de Sysmon exacto.", en: "Identify process injections and anomalous cmd executions by correlating process creation event IDs (ID 1, 3, 11)." }],
+          ["2.2", { es: "Telemetría Cloud e Ingesta de Logs", en: "Cloud Telemetry & Log Ingestion" }, { es: "Estructuras de logging en entornos nube: AWS CloudTrail, VPC Flow Logs y logs de Azure. Centralización y parseo de eventos de APIs Cloud.", en: "Understanding cloud-specific logging architectures: AWS CloudTrail, VPC Flow Logs, and Azure Activity Logs. Centralizing diverse API inputs." }, "AWS CloudTrail Docs, Azure Activity Logs", { es: "3 semanas", en: "3 Weeks" }, { es: "Fase 1.1", en: "Phase 1.1" }, { es: "Diagrama de flujo de ingesta y script parseador", en: "Cloud log ingestion flow diagram and parser script" }, { es: "Explicas la diferencia entre eventos de plano de control y de plano de datos en AWS.", en: "Explain the difference between control-plane API audit events and data-plane resource-level logs in AWS." }],
+          ["2.3", { es: "Centralización y SIEM (Splunk/Elastic)", en: "SIEM Engineering & Analytics" }, { es: "Uso avanzado de consultas (Splunk SPL / Elastic KQL) para buscar anomalías de endpoints y flujos cloud en un índice unificado.", en: "Configuring Splunk Enterprise or Elastic Stack. Writing advanced search queries (Splunk SPL / Elastic KQL) to audit host, network, and cloud data feeds." }, "Splunk Enterprise Free Training", { es: "5 semanas", en: "5 Weeks" }, { es: "Fase 2.2", en: "Phase 2.2" }, { es: "Dashboard SOC interactivo implementado en Splunk", en: "Operational SIEM dashboard correlating threat scenarios from event logs" }, { es: "Correlacionas un vector de red con la posterior inyección de proceso en el host.", en: "Build an analytics query linking a web exploitation event to a subsequent local process execution on the host." }],
+          ["2.4", { es: "Lógica de Detección (Sigma y Yara)", en: "Platform-Agnostic Detection Rules" }, { es: "Desarrollo de reglas Sigma independientes de plataforma y firmas Yara para escaneo de amenazas en memoria volátil.", en: "Drafting system detection rules using Sigma syntax. Analyzing volatile memory and tracking threat binaries in-memory using Yara rules." }, "Sigma Standard Docs, Yara Rules Guide", { es: "4 semanas", en: "4 Weeks" }, { es: "Fase 2.3", en: "Phase 2.3" }, { es: "Reglas Sigma validadas con telemetría de ataques controlados", en: "GitHub repository of custom Sigma alert rules validated with live audit telemetry" }, { es: "Escribes una firma capaz de alertar dumps de memoria de LSASS limitando falsos positivos.", en: "Write alert signatures targeting LSASS credential dump attempts while minimizing false positives from normal system noise." }]
         ]
       },
       {
-        id: "phase-3", name: "Phase 3: DFIR (Digital Forensics & Incident Response)", duration: "4-5 Months", goal: "Identify, collect, analyze, and document threat persistence and system impact on compromised hosts using forensic methodologies.", rows: [
-          ["3.1", "Forensic Disk Artifacts", "Targeted acquisition and parsing of Windows system artifacts (Master File Table (MFT), Registry, Prefetch, Amcache, LNK shortcuts) via Autopsy and CLI parsers.", "Autopsy Training, SANS Forensics Guides", "6 Weeks", "Phase 1 & Phase 2", "Formal forensic report of a compromised system disk image", "Construct a precise threat timeline of a mock threat actor's activities using residual disk artifact evidence."],
-          ["3.2", "Volatile Memory Forensics", "Capturing live RAM images and performing deep analytics using Volatility 3. Identifying hidden sockets, dead processes, and dumping payloads.", "Volatility 3 Docs, CyberDefenders Labs", "5 Weeks", "Phase 3.1", "Memory analysis report extracting malware behavior from a RAM dump", "Locate fileless malware running strictly in-memory and successfully carve out injected system payloads."],
-          ["3.3", "Malware Dissection & Sandboxing", "Controlled threat execution in isolated sandboxes, inspecting portable executable (PE) headers, parsing script obfuscation, and basic static analysis using Ghidra.", "Practical Malware Analysis (Michael Sikorski)", "5 Weeks", "Phase 3.2", "Static & dynamic behavior profile detailing a compiled malware binary", "Identify and document the C2 beaconing IP addresses and callback domain signatures of a compiled malware sample."]
+        id: "phase-3",
+        name: { es: "Fase 3: DFIR (Forense Digital e Incidentes)", en: "Phase 3: DFIR (Digital Forensics & Incident Response)" },
+        duration: { es: "4-5 meses", en: "4-5 Months" },
+        goal: {
+          es: "Identificar, recolectar, analizar y documentar el impacto y la persistencia de amenazas en sistemas utilizando metodologías forenses.",
+          en: "Identify, collect, analyze, and document threat persistence and system impact on compromised hosts using forensic methodologies."
+        },
+        rows: [
+          ["3.1", { es: "Artefactos Forenses de Disco", en: "Forensic Disk Artifacts" }, { es: "Extracción metodológica de artefactos Windows (MFT, Registro, Prefetch, Amcache, LNK) usando Autopsy.", en: "Targeted acquisition and parsing of Windows system artifacts (Master File Table (MFT), Registry, Prefetch, Amcache, LNK shortcuts) via Autopsy and CLI parsers." }, "Autopsy Training, SANS Forensics Guides", { es: "6 semanas", en: "6 Weeks" }, { es: "Fases 1 y 2", en: "Phase 1 & Phase 2" }, { es: "Informe forense estructurado de un disco comprometido", en: "Formal forensic report of a compromised system disk image" }, { es: "Construyes la línea de tiempo exacta de una amenaza a través de evidencias residuales en disco.", en: "Construct a precise threat timeline of a mock threat actor's activities using residual disk artifact evidence." }],
+          ["3.2", { es: "Análisis Forense de Memoria Volátil", en: "Volatile Memory Forensics" }, { es: "Captura de memoria viva y análisis profundo con Volatility 3. Búsqueda de sockets, procesos ocultos e inyecciones.", en: "Capturing live RAM images and performing deep analytics using Volatility 3. Identifying hidden sockets, dead processes, and dumping payloads." }, "Volatility 3 Docs, CyberDefenders Labs", { es: "5 semanas", en: "5 Weeks" }, { es: "Fase 3.1", en: "Phase 3.1" }, { es: "Write-up de análisis de memoria RAM extraída de un servidor", en: "Memory analysis report extracting malware behavior from a RAM dump" }, { es: "Encuentras malware fileless (sin archivo) operando estrictamente en la memoria RAM.", en: "Locate fileless malware running strictly in-memory and successfully carve out injected system payloads." }],
+          ["3.3", { es: "Disección de Malware y Sandboxing", en: "Malware Dissection & Sandboxing" }, { es: "Ejecución controlada de binarios en sandboxes, inspección de cabeceras PE y desofuscación inicial de scripts maliciosos.", en: "Controlled threat execution in isolated sandboxes, inspecting portable executable (PE) headers, parsing script obfuscation, and basic static analysis using Ghidra." }, "Practical Malware Analysis (Michael Sikorski)", { es: "5 semanas", en: "5 Weeks" }, { es: "Fase 3.2", en: "Phase 3.2" }, { es: "Perfil de comportamiento estático y dinámico de un binario malicioso", en: "Static & dynamic behavior profile detailing a compiled malware binary" }, { es: "Identificas y documentas los dominios C2 y el comportamiento en red de una muestra compilada de malware.", en: "Identify and document the C2 beaconing IP addresses and callback domain signatures of a compiled malware sample." }]
         ]
       },
       {
-        id: "phase-4", name: "Phase 4: Enterprise AD & Cloud Defense Architecture", duration: "3-5 Months", goal: "Understand Active Directory security, monitor authentication vectors, and deploy defensive monitoring, identity auditing, and posture management in public cloud infrastructures.", rows: [
-          ["4.1", "Active Directory Security", "Auditing and monitoring AD forests. Identifying Kerberoasting, AS-REP Roasting, Golden Ticket persistence, delegated access vulnerabilities, and Pass-The-Hash.", "Microsoft AD Security, THM AD Rooms", "6 Weeks", "Phase 2 & Phase 3", "Hardening and auditing Group Policy Object (GPO) blueprint for AD", "Detect and alert on a Privilege Escalation attempt on a domain controller using domain Security events (Event ID 4768/4769)."],
-          ["4.2", "Cloud Identity & Resource Defense", "Auditing AWS/Azure IAM permissions, monitoring metadata service (IMDS) security, detecting S3/Storage exposures, and implementing the principle of least privilege.", "AWS Identity Security, Azure IAM Paths", "6 Weeks", "Phase 2.2", "Cloud Infrastructure Entitlement Management (CIEM) audit report", "Detect and document AWS IAM privilege escalation paths and metadata service (IMDS) token abuse attempts."],
-          ["4.3", "Cloud Security Posture Management (CSPM)", "Analyzing cloud security configuration drift, configuring GuardDuty, Microsoft Defender for Cloud, and writing automated alert rules for IAM and API drift.", "AWS Security Hub, Sentinel Docs", "4 Weeks", "Phase 4.2", "Infrastructure as Code AWS/Azure security monitoring configuration", "Analyze API logs to identify geographically impossible logons or irregular programmatic access key rotations."]
+        id: "phase-4",
+        name: { es: "Fase 4: Active Directory y Arquitectura Cloud Defensiva", en: "Phase 4: Enterprise AD & Cloud Defense Architecture" },
+        duration: { es: "3-5 meses", en: "3-5 Months" },
+        goal: {
+          es: "Comprender la seguridad de Active Directory, el control de vectores de autenticación y el monitoreo defensivo en infraestructuras de Nube Pública.",
+          en: "Understand Active Directory security, monitor authentication vectors, and deploy defensive monitoring, identity auditing, and posture management in public cloud infrastructures."
+        },
+        rows: [
+          ["4.1", { es: "Seguridad en Active Directory", en: "Active Directory Security" }, { es: "Auditoría de bosques AD, Kerberoasting, AS-REP Roasting, vulnerabilidades de delegación de acceso y Pass-The-Hash.", en: "Auditing and monitoring AD forests. Identifying Kerberoasting, AS-REP Roasting, Golden Ticket persistence, delegated access vulnerabilities, and Pass-The-Hash." }, "Microsoft AD Security, THM AD Rooms", { es: "6 semanas", en: "6 Weeks" }, { es: "Fases 2 y 3", en: "Phase 2 & Phase 3" }, { es: "Plan de configuración de GPOs seguras y logs auditados de AD", en: "Hardening and auditing Group Policy Object (GPO) blueprint for AD" }, { es: "Detectas y emites alerta ante intentos de escalada de privilegios en el DC usando eventos de seguridad (ID 4768/4769).", en: "Detect and alert on a Privilege Escalation attempt on a domain controller using domain Security events (Event ID 4768/4769)." }],
+          ["4.2", { es: "Identidad Cloud y Recursos Defensivos", en: "Cloud Identity & Resource Defense" }, { es: "Auditoría de permisos AWS/Azure IAM, monitoreo del servicio de metadatos (IMDS) y exposiciones en buckets de almacenamiento (S3).", en: "Auditing AWS/Azure IAM permissions, monitoring metadata service (IMDS) security, detecting S3/Storage exposures, and implementing the principle of least privilege." }, "AWS Identity Security, Azure IAM Paths", { es: "6 semanas", en: "6 Weeks" }, { es: "Fase 2.2", en: "Phase 2.2" }, { es: "Reporte de auditoría de manejo de derechos en la infraestructura cloud (CIEM)", en: "Cloud Infrastructure Entitlement Management (CIEM) audit report" }, { es: "Detectas y documentas rutas de escalada de privilegios IAM e intentos de abuso del token IMDS en AWS.", en: "Detect and document AWS IAM privilege escalation paths and metadata service (IMDS) token abuse attempts." }],
+          ["4.3", { es: "Gestión de Postura de Seguridad (CSPM)", en: "Cloud Security Posture Management (CSPM)" }, { es: "Análisis de configuraciones de nube (drift), reglas de alertas para AWS GuardDuty / Azure Defender y rotación de APIs.", en: "Analyzing cloud security configuration drift, configuring GuardDuty, Microsoft Defender for Cloud, and writing automated alert rules for IAM and API drift." }, "AWS Security Hub, Sentinel Docs", { es: "4 semanas", en: "4 Weeks" }, { es: "Fase 4.2", en: "Phase 4.2" }, { es: "Configuración y análisis de monitoreo IaC (Infraestructura como Código)", en: "Infrastructure as Code AWS/Azure security monitoring configuration" }, { es: "Analizas logs API para identificar inicios de sesión imposibles o rotación anómala de claves en entornos Cloud.", en: "Analyze API logs to identify geographically impossible logons or irregular programmatic access key rotations." }]
         ]
       }
     ];
 
-    // Resource Library Data
     const resources = [
-      {phase:"Phase 0", subject:"Shell CLI", name:"Linux Journey", source:"Linux Journey (Web)", url:"https://linuxjourney.com/", language:"English", difficulty:"Principiante", status:"Gratuito", duration:"2 Weeks", prereq:"None", learn:"Terminal basics, navigation, file management, piping commands, system services, and shell scripting.", exercises:"Interactive command checkmarks.", project:"Custom bash automation script.", mastery:"Comfortably perform file modification and process monitoring strictly via shell."},
-      {phase:"Phase 0", subject:"Windows CLI", name:"PowerShell Command Line Guide", source:"Microsoft Docs", url:"https://learn.microsoft.com/en-us/powershell/", language:"English", difficulty:"Principiante", status:"Gratuito", duration:"2 Weeks", prereq:"Basic OS", learn:"Cmdlets, Select-String filtering, object piping, exporting logs (CSV, XML), and process auditing.", exercises:"Command-line exercises querying host state.", project:"Script generating a local audit of open ports and running processes.", mastery:"Extract active sockets and running services directly from the command line."},
-      {phase:"Phase 0", subject:"Version Control", name:"Pro Git Book (Ch. 1-3)", source:"Git SCM", url:"https://git-scm.com/book/en/v2", language:"English", difficulty:"Principiante", status:"Gratuito", duration:"1 Week", prereq:"CLI basics", learn:"Version control concepts, Git local workflow (staging, commits), remote syncing with GitHub, and branching.", exercises:"Daily version-control commits.", project:"Structured Markdown notes repository pushed to GitHub.", mastery:"Resolve merge conflicts and handle file pushes exclusively via terminal Git CLI."},
-      {phase:"Phase 1", subject:"Networking", name:"Network Defense Path", source:"Cisco Skills for All", url:"https://skillsforall.com/course/network-defense", language:"English", difficulty:"Principiante-Intermedio", status:"Gratuito", duration:"5 Weeks", prereq:"Phase 0", learn:"Secure network topologies, protocol designs (TCP, UDP, DNS, TLS), firewall routing, and IDS/IPS concepts.", exercises:"Official Cisco assessments.", project:"Logical schematic layout of a secure segmented network.", mastery:"Calculate CIDR subnets and accurately chart routing behaviors."},
-      {phase:"Phase 1", subject:"Packet Analysis", name:"Wireshark Packet Analysis Masterclass", source:"Chris Greer (YouTube)", url:"https://www.youtube.com/@ChrisGreer", language:"English", difficulty:"Intermedio", status:"Gratuito", duration:"3 Weeks", prereq:"Network protocols", learn:"Packet dissection, filtering syntax, TCP handshakes, measuring network latency, and extracting object payloads from traces.", exercises:"Analysis of corporate sample capture files.", project:"Intrusion analysis packet report on a captured PCAP.", mastery:"Identify anomalous DNS tunnels and SQL injections purely by analyzing raw packet streams."},
-      {phase:"Phase 2", subject:"Host Telemetry", name:"Sysinternals Suite Official Guide", source:"Microsoft TechNet", url:"https://learn.microsoft.com/en-us/sysinternals/", language:"English", difficulty:"Intermedio", status:"Gratuito", duration:"3 Weeks", prereq:"Phase 0", learn:"Analyzing processes using Process Explorer, tracking file access via Process Monitor, and configuring Sysmon for continuous telemetry.", exercises:"Monitoring malware state locally.", project:"Sysmon configuration setup deployed with SwiftOnSecurity guidelines.", mastery:"Pinpoint code injection attempts and persistence mechanisms by querying specific Sysmon Event IDs."},
-      {phase:"Phase 2", subject:"SIEM Engineering", name:"Splunk Fundamentals (Free)", source:"Splunk Academy", url:"https://www.splunk.com/en_us/training/free-courses/splunk-fundamentals.html", language:"English", difficulty:"Intermedio", status:"Gratuito", duration:"4 Weeks", prereq:"OS & Event Logs", learn:"Using SPL query syntax, searching ingested indices, building dashboards, and generating high-fidelity alerts.", exercises:"Interactive sandbox challenges.", project:"SOC dashboard visualizing authentication and firewall alerts.", mastery:"Write Splunk SPL queries capable of correlating anomalous host events to network telemetry inputs."},
-      {phase:"Phase 3", subject:"Memory Forensics", name:"Volatility Foundations", source:"Volatility Project", url:"https://volatilityfoundation.org/", language:"English", difficulty:"Difícil", status:"Gratuito", duration:"4 Weeks", prereq:"Systems & Networks Core", learn:"Analysing memory dumps, using Volatility 3 command-line tools, and extracting active handles and sockets.", exercises:"Analyzing forensic memory samples.", project:"Incident report documenting processes extracted from a server RAM dump.", mastery:"Carve out injected malware threads residing strictly in volatile memory."}
+      {
+        phase: "Phase 0",
+        subject: { es: "Consola y Sistemas", en: "Shell CLI" },
+        name: "Linux Journey",
+        source: "Linux Journey (Web)",
+        url: "https://linuxjourney.com/",
+        language: { es: "Español / Inglés", en: "English / Spanish" },
+        difficulty: "Principiante",
+        status: { es: "Gratuito", en: "Free" },
+        duration: "2 Weeks",
+        prereq: "None",
+        learn: {
+          es: "Consola, rutas, manipulación de texto con grep/awk, permisos de archivos, scripts y servicios básicos.",
+          en: "Terminal basics, navigation, file management, piping commands, system services, and shell scripting."
+        },
+        exercises: { es: "Desafíos interactivos de la plataforma.", en: "Interactive command checkmarks." },
+        project: { es: "Script de Bashrc optimizado.", en: "Custom bash automation script." },
+        mastery: {
+          es: "Navegas y editas archivos de configuración sin utilizar interfaces gráficas.",
+          en: "Comfortably perform file modification and process monitoring strictly via shell."
+        }
+      },
+      {
+        phase: "Phase 0",
+        subject: { es: "Consola Windows", en: "Windows CLI" },
+        name: "PowerShell Command Line Guide",
+        source: "Microsoft Docs",
+        url: "https://learn.microsoft.com/en-us/powershell/",
+        language: { es: "Español / Inglés", en: "English / Spanish" },
+        difficulty: "Principiante",
+        status: { es: "Gratuito", en: "Free" },
+        duration: "2 Weeks",
+        prereq: "Basic OS",
+        learn: {
+          es: "Cmdlets de PowerShell, Select-String, tuberías avanzadas de objetos y exportación de logs.",
+          en: "Cmdlets, Select-String filtering, object piping, exporting logs (CSV, XML), and process auditing."
+        },
+        exercises: { es: "Búsquedas selectivas del estado de hosts.", en: "Command-line exercises querying host state." },
+        project: { es: "Script de inventario de sockets y procesos locales.", en: "Script generating a local audit of open ports and running processes." },
+        mastery: {
+          es: "Extraes sockets de red y puertos de escucha activos directo desde terminal.",
+          en: "Extract active sockets and running services directly from the command line."
+        }
+      },
+      {
+        phase: "Phase 1",
+        subject: { es: "Redes Corporativas", en: "Networking" },
+        name: "Network Defense Path",
+        source: "Cisco Skills for All",
+        url: "https://skillsforall.com/course/network-defense",
+        language: { es: "Inglés / Español", en: "English / Spanish" },
+        difficulty: "Principiante-Intermedio",
+        status: { es: "Gratuito (Registro)", en: "Free (Registration Required)" },
+        duration: "5 Weeks",
+        prereq: "Phase 0",
+        learn: {
+          es: "Arquitecturas de red seguras, protocolos (TCP/UDP, DNS, TLS), segmentación, firewalls y conceptos de IDS/IPS.",
+          en: "Secure network topologies, protocol designs (TCP, UDP, DNS, TLS), firewall routing, and IDS/IPS concepts."
+        },
+        exercises: { es: "Evaluaciones modulares del curso.", en: "Official Cisco assessments." },
+        project: { es: "Diseño y segmentación de topología lógica segura.", en: "Logical schematic layout of a secure segmented network." },
+        mastery: {
+          es: "Calculas direccionamientos CIDR complejos y previenes saltos laterales de red.",
+          en: "Calculate CIDR subnets and accurately chart routing behaviors."
+        }
+      },
+      {
+        phase: "Phase 1",
+        subject: { es: "Análisis de Tráfico", en: "Packet Analysis" },
+        name: "Wireshark Packet Analysis",
+        source: "Chris Greer (YouTube)",
+        url: "https://www.youtube.com/@ChrisGreer",
+        language: { es: "Inglés", en: "English" },
+        difficulty: "Intermedio",
+        status: { es: "Gratuito", en: "Free" },
+        duration: "3 Weeks",
+        prereq: "Networking",
+        learn: {
+          es: "Filtros BPF avanzados, reconstrucción de flujos TCP, identificación de latencias y extracción de malware desde capturas PCAP.",
+          en: "Advanced BPF filtering, TCP stream reconstruction, latency identification, and extracting malware from PCAP files."
+        },
+        exercises: { es: "Análisis guiado sobre PCAPs corporativos reales.", en: "Guided analysis on real corporate PCAPs." },
+        project: { es: "Reporte de investigación de exfiltración de red.", en: "Network exfiltration investigation report." },
+        mastery: {
+          es: "Detectas túneles DNS anómalos o SQLi mirando puramente el tráfico bruto.",
+          en: "Detect anomalous DNS tunnels or SQLi looking purely at raw traffic."
+        }
+      },
+      {
+        phase: "Phase 2",
+        subject: { es: "Monitoreo de Endpoint", en: "Host Telemetry" },
+        name: "Sysinternals Suite Guide",
+        source: "Microsoft TechNet",
+        url: "https://learn.microsoft.com/en-us/sysinternals/",
+        language: { es: "Inglés", en: "English" },
+        difficulty: "Intermedio",
+        status: { es: "Gratuito", en: "Free" },
+        duration: "3 Weeks",
+        prereq: "Phase 0",
+        learn: {
+          es: "Uso de Process Explorer, Process Monitor para análisis dinámico, y despliegue del agente de telemetría Sysmon.",
+          en: "Analyzing processes using Process Explorer, tracking file access via Process Monitor, and configuring Sysmon for continuous telemetry."
+        },
+        exercises: { es: "Seguimiento de procesos de troyanos en laboratorio.", en: "Monitoring malware state locally." },
+        project: { es: "Configuración Sysmon basada en SwiftOnSecurity.", en: "Sysmon configuration setup deployed with SwiftOnSecurity guidelines." },
+        mastery: {
+          es: "Mapeas ejecuciones anómalas localizando Event IDs clave en logs de Sysmon.",
+          en: "Pinpoint code injection attempts and persistence mechanisms by querying specific Sysmon Event IDs."
+        }
+      },
+      {
+        phase: "Phase 2",
+        subject: { es: "SIEM y Monitoreo", en: "SIEM & Analytics" },
+        name: "Splunk Free Training",
+        source: "Splunk Academy",
+        url: "https://www.splunk.com/en_us/training/free-courses/splunk-fundamentals.html",
+        language: { es: "Inglés", en: "English" },
+        difficulty: "Intermedio",
+        status: { es: "Gratuito", en: "Free" },
+        duration: "4 Weeks",
+        prereq: "Sysinternals & Logs",
+        learn: {
+          es: "Lenguaje SPL de Splunk, parseo de logs, construcción de dashboards interactivos y creación de alertas SOC.",
+          en: "Splunk SPL language, log parsing, building interactive dashboards, and creating SOC alerts."
+        },
+        exercises: { es: "Retos de búsqueda en entornos sandbox oficiales.", en: "Search challenges in official sandbox environments." },
+        project: { es: "Dashboard unificado para ataques web e inicios de sesión.", en: "Unified dashboard for web attacks and logins." },
+        mastery: {
+          es: "Escribes consultas SPL complejas que enlazan telemetría local de hosts con registros de red.",
+          en: "Write complex SPL queries that link local host telemetry with network records."
+        }
+      },
+      {
+        phase: "Phase 2",
+        subject: { es: "Detección de Amenazas", en: "Detection Engineering" },
+        name: "SigmaHQ Rules",
+        source: "SigmaHQ (GitHub)",
+        url: "https://github.com/SigmaHQ/sigma",
+        language: { es: "Inglés", en: "English" },
+        difficulty: "Intermedio-Avanzado",
+        status: { es: "Gratuito", en: "Free (Open Source)" },
+        duration: "3 Weeks",
+        prereq: "SIEM & Logs",
+        learn: {
+          es: "Creación de firmas de detección genéricas (YAML) que pueden convertirse a Splunk, Elastic o QRadar.",
+          en: "Creation of generic detection signatures (YAML) that can be converted to Splunk, Elastic, or QRadar."
+        },
+        exercises: { es: "Simulación de ataques con Atomic Red Team y escritura de regla.", en: "Simulating attacks with Atomic Red Team and writing rules." },
+        project: { es: "Paquete de reglas personalizadas publicadas en GitHub.", en: "Custom ruleset package published on GitHub." },
+        mastery: {
+          es: "Diseñas reglas estables minimizando falsos positivos corporativos.",
+          en: "Design stable rules minimizing corporate false positives."
+        }
+      },
+      {
+        phase: "Phase 3",
+        subject: { es: "Forense Digital Práctico", en: "Practical DFIR" },
+        name: "CyberDefenders Labs",
+        source: "CyberDefenders.org",
+        url: "https://cyberdefenders.org/blueteam-ctf-challenges/",
+        language: { es: "Inglés", en: "English" },
+        difficulty: "Difícil",
+        status: { es: "Gratuito (Laboratorios Abiertos)", en: "Free (Open Labs)" },
+        duration: "Ongoing",
+        prereq: "Phase 1 & 2",
+        learn: {
+          es: "Investigación de escenarios reales: análisis forense de imágenes de disco, tráfico de red, memoria y logs para desmantelar intrusiones.",
+          en: "Real-world incident investigation: disk image forensics, network traffic, memory, and log analysis to dismantle intrusions."
+        },
+        exercises: { es: "Retos CTF defensivos basados en incidentes del mundo real.", en: "Defensive CTF challenges based on real-world incidents." },
+        project: { es: "Write-ups paso a paso de las resoluciones en Medium o GitHub.", en: "Step-by-step write-ups of resolutions on Medium or GitHub." },
+        mastery: {
+          es: "Puedes reconstruir la línea de tiempo completa de un atacante usando múltiples artefactos del sistema.",
+          en: "You can reconstruct a complete attacker timeline using multiple system artifacts."
+        }
+      },
+      {
+        phase: "Phase 3",
+        subject: { es: "Forense de RAM", en: "Memory Forensics" },
+        name: "Volatility Foundations",
+        source: "Volatility Foundation",
+        url: "https://volatilityfoundation.org/",
+        language: { es: "Inglés", en: "English" },
+        difficulty: "Difícil",
+        status: { es: "Gratuito", en: "Free (Open Source)" },
+        duration: "4 Weeks",
+        prereq: "OS Internals",
+        learn: {
+          es: "Extracción de memoria viva, análisis del CLI de Volatility 3, identificación de inyecciones de DLL y procesos huérfanos.",
+          en: "Live memory extraction, Volatility 3 CLI analysis, DLL injection identification, and orphan process tracking."
+        },
+        exercises: { es: "Análisis de muestras de memoria infectadas (dumps).", en: "Analysis of infected memory samples (dumps)." },
+        project: { es: "Reporte forense de malware operando en RAM.", en: "Forensic report on malware operating exclusively in RAM." },
+        mastery: {
+          es: "Identificas y extraes malware *fileless* escondido exclusivamente en la memoria.",
+          en: "Identify and extract fileless malware hiding exclusively in memory."
+        }
+      },
+      {
+        phase: "Phase 4",
+        subject: { es: "Directorio Activo", en: "Active Directory" },
+        name: "TryHackMe: AD Defense",
+        source: "TryHackMe",
+        url: "https://tryhackme.com/",
+        language: { es: "Inglés", en: "English" },
+        difficulty: "Intermedio-Avanzado",
+        status: { es: "Freemium", en: "Freemium ($14/mo)" },
+        duration: "4 Weeks",
+        prereq: "Windows Sysadmin",
+        learn: {
+          es: "Vulnerabilidades empresariales de Windows: Kerberoasting, AS-REP Roasting, Golden Tickets y endurecimiento de GPOs.",
+          en: "Enterprise Windows vulnerabilities: Kerberoasting, AS-REP Roasting, Golden Tickets, and GPO hardening."
+        },
+        exercises: { es: "Máquinas virtuales interactivas con redes AD completas.", en: "Interactive virtual machines with full AD networks." },
+        project: { es: "Esquema de bastionado (Hardening) y políticas para controladores de dominio.", en: "Hardening scheme and policies for Domain Controllers." },
+        mastery: {
+          es: "Identificas las huellas (Event IDs) que deja un ataque Pass-The-Hash.",
+          en: "Identify the footprints (Event IDs) left by a Pass-The-Hash attack."
+        }
+      },
+      {
+        phase: "Phase 4",
+        subject: { es: "Seguridad Cloud", en: "Cloud Security" },
+        name: "AWS CloudTrail & IAM Labs",
+        source: "AWS Skill Builder",
+        url: "https://explore.skillbuilder.aws/learn",
+        language: { es: "Inglés / Español", en: "English / Spanish" },
+        difficulty: "Intermedio-Avanzado",
+        status: { es: "Gratuito", en: "Free" },
+        duration: "4 Weeks",
+        prereq: "SIEM & Networking",
+        learn: {
+          es: "Monitoreo del plano de control con CloudTrail, escalada de privilegios IAM (roles asumidos) y metadatos IMDS.",
+          en: "Control plane monitoring with CloudTrail, IAM privilege escalation (assumed roles), and IMDS metadata."
+        },
+        exercises: { es: "Detección de anomalías en logs JSON de flujos VPC y API.", en: "Anomaly detection in VPC Flow and API JSON logs." },
+        project: { es: "Auditoría CIEM para identificar permisos excesivos en la nube.", en: "CIEM audit to identify excessive cloud permissions." },
+        mastery: {
+          es: "Detectas exfiltración de datos mapeando las llamadas a las APIs de almacenamiento.",
+          en: "Detect data exfiltration by mapping storage API calls."
+        }
+      }
     ];
 
-    // Weekly Schedule Data
+    const certsData = [
+      {
+        name: "CompTIA Security+",
+        status: { es: "Estado: OPCIONAL / Filtro de RRHH", en: "Status: OPTIONAL / HR-Filter Only" },
+        desc: {
+          es: "Examen 100% teórico enfocado en estándares (ISO, NIST), gobernanza y fundamentos. Ideal únicamente para superar filtros automatizados corporativos iniciales.",
+          en: "Focuses primarily on security governance, risk management frameworks (NIST, ISO), and general engineering terminology. Highly optional. Only pursue this if targeting traditional enterprise sectors or government jobs that utilize automated HR screeners."
+        },
+        cost: "~$400 USD",
+        format: { es: "Teórico / Opción Múltiple", en: "Multiple-choice (theoretical)" }
+      },
+      {
+        name: "BTL1 (Blue Team Level 1)",
+        status: { es: "Estado: MUY RECOMENDADO (Disparador Laboral)", en: "Status: HIGHLY RECOMMENDED (JOB TRIGGER)" },
+        desc: {
+          es: "Evaluación 100% práctica de 24 horas. Resuelves un incidente corporativo en vivo haciendo triaje, forense en disco, inspección de logs y red.",
+          en: "A rigorous, practical 24-hour examination that requires candidates to respond to simulated corporate security incident telemetry. It tests log parsing, incident investigation, and network triaging on a live cloud VM."
+        },
+        cost: "~$500 USD",
+        format: { es: "Práctico / Laboratorio Cloud", en: "100% practical, hands-on lab assessment" }
+      },
+      {
+        name: "HTB CDSA (Defensive Security Analyst)",
+        status: { es: "Estado: MUY RECOMENDADO (Nivel Técnico de Oro)", en: "Status: HIGHLY RECOMMENDED (JOB TRIGGER)" },
+        desc: {
+          es: "Examen de varios días centrado en ingeniería de detección, análisis profundo y búsqueda de amenazas avanzadas en entornos Windows y Nube.",
+          en: "An exhaustive, multi-day, practical exam requiring deep host analysis, forensic log parsing, and the development of high-fidelity detection rules against sophisticated threat actors."
+        },
+        cost: "~$450 USD",
+        format: { es: "Práctico / Laboratorio Multihost", en: "Deep, connected multi-day VM threat hunting lab" }
+      }
+    ];
+
     const weekSegments = [
-      {phase:"Phase 0", start:1, end:6, focus:"Headless console commands, advanced Linux system management, and PowerShell automation.", resources:"Linux Journey, CMD/PowerShell reference guides", deliverable:"Local system audit PowerShell script."},
-      {phase:"Phase 0", start:7, end:12, focus:"CLI Git operations and advanced local virtualization configurations.", resources:"Pro Git, VirtualBox documentation", deliverable:"Active multi-VM host-only test network."},
-      {phase:"Phase 1", start:13, end:22, focus:"Pila de protocolos TCP/IP, CIDR subnetting, packet structures, and routing logic.", resources:"Cisco Skills for All", deliverable:"Segmented network logical diagram."},
-      {phase:"Phase 1", start:23, end:30, focus:"Headless network capturing via tcpdump and deep packet analysis in Wireshark.", resources:"Chris Greer, tcpdump manual", deliverable:"Packet analysis report of a mock intrusion PCAP."},
-      {phase:"Phase 1", start:31, end:36, focus:"Firewall architectures and writing Suricata/Snort alert rules.", resources:"Suricata manual, Snort guide", deliverable:"Valid Suricata signature set detecting network probes."},
-      {phase:"Phase 2", start:37, end:44, focus:"System auditing policies, Sysmon deployment, and process tree analysis.", resources:"Microsoft Sysinternals, Windows auditing manuals", deliverable:"Centralized local logging Sysmon install package."},
-      {phase:"Phase 2", start:45, end:48, focus:"Ingesting and parsing cloud-native telemetry logs: AWS CloudTrail, VPC Flow Logs, and API feeds.", resources:"AWS CloudTrail Docs", deliverable:"Cloud log JSON parsers and event mapping schematic."},
-      {phase:"Phase 2", start:49, end:60, focus:"SIEM operations (Splunk/Elastic), ingesting data logs, and building search alerts.", resources:"Splunk Enterprise, Elastic", deliverable:"Centralized Splunk SOC monitoring dashboard."},
-      {phase:"Phase 2", start:61, end:66, focus:"Detection engineering: translating threat indicators into Sigma and Yara rules.", resources:"Sigma Rules syntax, Yara manuals", deliverable:"A verified set of 5 Sigma detection rules pushed to GitHub."},
-      {phase:"Phase 3", start:67, end:78, focus:"Disk forensics, Master File Table analysis, and tracking Registry changes in Autopsy.", resources:"Autopsy, SANS Forensics documentation", deliverable:"Comprehensive disk analysis threat timeline report."},
-      {phase:"Phase 3", start:79, end:86, focus:"Memory forensics and volatile RAM dump analysis utilizing Volatility 3.", resources:"Volatility, CyberDefenders", deliverable:"Memory forensic analysis write-up extracting active process anomalies."},
-      {phase:"Phase 3", start:87, end:92, focus:"Sandboxing, reading portable executable headers, and dissecting simple script malware.", resources:"Practical Malware Analysis", deliverable:"An IoC signature sheet from a dissected malware script."},
-      {phase:"Phase 4", start:93, end:98, focus:"Active Directory security, Domain Controller log auditing, and GPO bastions.", resources:"Microsoft AD guide, THM AD rooms", deliverable:"Domain auditing and GPO security blueprint config."},
-      {phase:"Phase 4", start:99, end:104, focus:"Cloud Identity IAM privilege escalation paths, CSPM alert automation, and portfolio refinement.", resources:"AWS IAM docs, Azure Sentinel", deliverable:"Active AWS/Azure IAM defense assessment report."}
+      {phase: {es: "Fase 0", en: "Phase 0"}, start:1, end:6, focus: {es: "Consola de administración, comandos avanzados de sistemas Linux y automatización en Windows.", en: "Headless console commands, advanced Linux system management, and PowerShell automation."}, resources: "Linux Journey, CMD/PowerShell reference guides", deliverable: {es: "Script documentado que audita puertos y servicios locales.", en: "Local system audit PowerShell script."}},
+      {phase: {es: "Fase 0", en: "Phase 0"}, start:7, end:12, focus: {es: "Mecanismos de control de versiones y virtualización avanzada para laboratorios SOC.", en: "CLI Git operations and advanced local virtualization configurations."}, resources: "Pro Git, VirtualBox documentation", deliverable: {es: "Repositorio Git estructurado y comunicación de máquinas virtuales en red privada.", en: "Active multi-VM host-only test network."}},
+      {phase: {es: "Fase 1", en: "Phase 1"}, start:13, end:22, focus: {es: "Protocolos de red corporativos profunda, direccionamiento IP, flujo de paquetes y arquitectura de red.", en: "TCP/IP protocols, CIDR subnetting, packet structures, and routing logic."}, resources: "Cisco Skills for All", deliverable: {es: "Maqueta conceptual y lógica de direccionamiento corporativo segmentado.", en: "Segmented network logical diagram."}},
+      {phase: {es: "Fase 1", en: "Phase 1"}, start:23, end:30, focus: {es: "Intercepción de tráfico de red a bajo nivel mediante tcpdump e inspección en Wireshark.", en: "Headless network capturing via tcpdump and deep packet analysis in Wireshark."}, resources: "Chris Greer, tcpdump manual", deliverable: {es: "Informe detallado de análisis forense de un archivo de captura PCAP.", en: "Packet analysis report of a mock intrusion PCAP."}},
+      {phase: {es: "Fase 1", en: "Phase 1"}, start:31, end:36, focus: {es: "Bastionado perimetral e implementación técnica de reglas de detección IDS/IPS con Suricata/Snort.", en: "Firewall architectures and writing Suricata/Snort alert rules."}, resources: "Suricata manual, Snort guide", deliverable: {es: "Reglas Suricata validadas operativas para detectar escaneos de red anómalos.", en: "Valid Suricata signature set detecting network probes."}},
+      {phase: {es: "Fase 2", en: "Phase 2"}, start:37, end:44, focus: {es: "Análisis avanzado de logs de sistema, despliegue de Sysmon y análisis del árbol de ejecución de procesos de hosts.", en: "System auditing policies, Sysmon deployment, and process tree analysis."}, resources: "Microsoft Sysinternals, Windows auditing manuals", deliverable: {es: "Repositorio local de Sysmon instalado con telemetría centralizada en disco.", en: "Centralized local logging Sysmon install package."}},
+      {phase: {es: "Fase 2", en: "Phase 2"}, start:45, end:48, focus: {es: "Ingesta y parseo de logs de telemetría cloud: AWS CloudTrail, VPC Flow Logs y flujos API.", en: "Ingesting and parsing cloud-native telemetry logs: AWS CloudTrail, VPC Flow Logs, and API feeds."}, resources: "AWS CloudTrail Docs", deliverable: {es: "Parseadores JSON de logs Cloud y esquema de mapeo de eventos.", en: "Cloud log JSON parsers and event mapping schematic."}},
+      {phase: {es: "Fase 2", en: "Phase 2"}, start:49, end:60, focus: {es: "Consultas avanzadas en SIEM (Splunk/Elastic), indexación de eventos y monitoreo correlacionado.", en: "SIEM operations (Splunk/Elastic), ingesting data logs, and building search alerts."}, resources: "Splunk Enterprise, Elastic", deliverable: {es: "Dashboard de monitorización del SOC capaz de reportar alertas basadas en comportamiento.", en: "Centralized Splunk SOC monitoring dashboard."}},
+      {phase: {es: "Fase 2", en: "Phase 2"}, start:61, end:66, focus: {es: "Creación de firmas e ingeniería de detección de amenazas estructurada con Yara y Sigma.", en: "Detection engineering: translating threat indicators into Sigma and Yara rules."}, resources: "Sigma Rules syntax, Yara manuals", deliverable: {es: "Conjunto de 5 firmas Sigma validadas y documentadas en tu portafolio.", en: "A verified set of 5 Sigma detection rules pushed to GitHub."}},
+      {phase: {es: "Fase 3", en: "Phase 3"}, start:67, end:78, focus: {es: "Forense de archivos y disco en sistemas comprometidos utilizando Autopsy e instrumental de línea de comandos.", en: "Disk forensics, Master File Table analysis, and tracking Registry changes in Autopsy."}, resources: "Autopsy, SANS Forensics documentation", deliverable: {es: "Informe forense de disco identificando la línea de tiempo de la infección inicial.", en: "Comprehensive disk analysis threat timeline report."}},
+      {phase: {es: "Fase 3", en: "Phase 3"}, start:79, end:86, focus: {es: "Investigación forense en memoria RAM para detección de inyecciones de malware utilizando Volatility 3.", en: "Memory forensics and volatile RAM dump analysis utilizing Volatility 3."}, resources: "Volatility, CyberDefenders", deliverable: {es: "Write-up forense identificando el C&C del malware desde un volcado RAM.", en: "Memory forensic analysis write-up extracting active process anomalies."}},
+      {phase: {es: "Fase 3", en: "Phase 3"}, start:87, end:92, focus: {es: "Sandboxing técnico, análisis estático y dinámico inicial de amenazas en entornos controlados.", en: "Sandboxing, reading portable executable headers, and dissecting simple script malware."}, resources: "Practical Malware Analysis", deliverable: {es: "Ficha técnica de comportamiento e IoCs del análisis de un troyano controlado.", en: "An IoC signature sheet from a dissected malware script."}},
+      {phase: {es: "Fase 4", en: "Phase 4"}, start:93, end:98, focus: {es: "Bastionado y auditoría de eventos de Directorio Activo (AD). Kerberoasting, Golden Tickets.", en: "Active Directory security, Domain Controller log auditing, and GPO bastions."}, resources: "Microsoft AD guide, THM AD rooms", deliverable: {es: "Plan técnico de GPOs seguras y logs auditados de autenticación de dominios AD.", en: "Domain auditing and GPO security blueprint config."}},
+      {phase: {es: "Fase 4", en: "Phase 4"}, start:99, end:104, focus: {es: "Escaladas de privilegios IAM, automatización de alertas CSPM y estructuración del portafolio profesional.", en: "Cloud Identity IAM privilege escalation paths, CSPM alert automation, and portfolio refinement."}, resources: "AWS IAM docs, Azure Sentinel", deliverable: {es: "Reporte activo de evaluación de defensa IAM en AWS/Azure.", en: "Active AWS/Azure IAM defense assessment report."}}
     ];
 
-    // Structured Project Specifications
+    function phaseForWeek(w) { return weekSegments.find(s => w >= s.start && w <= s.end); }
+    function weekDetail(w) {
+      const s = phaseForWeek(w);
+      if (!s) return null;
+      const local = w - s.start + 1;
+      const span = s.end - s.start + 1;
+      
+      let actionObj = {
+        es: "Lecturas de logs y documentación de protocolos, pruebas guiadas en entornos cerrados y toma de notas conceptuales.",
+        en: "Read assigned documentation, analyze target packet traces/event logs, and complete guided sandbox exercises."
+      };
+      if (local === 1) {
+        actionObj = {
+          es: "Inicio de bloque temático: diseña la topología de la práctica, prepara las MV y analiza vectores.",
+          en: "Módulo kickoff: Blueprint target architecture, configure host environments, and define tracking tasks."
+        };
+      }
+      if (local === Math.ceil(span/2)) {
+        actionObj = {
+          es: "Punto medio: realiza análisis sobre incidentes controlados, depura falsos positivos.",
+          en: "Mid-module check: Complete unguided scenarios, evaluate telemetry outputs, and review logs."
+        };
+      }
+      if (local === span) {
+        actionObj = {
+          es: "Consolidación: documenta tus entregables en tu repositorio local y súbelos utilizando Git.",
+          en: "Deliverable sign-off: Compile your analysis reports, push files to GitHub using Git, and run Anki."
+        };
+      }
+      return {week:w, phase:s.phase, focus:s.focus, resources:s.resources, deliverable:s.deliverable, action: actionObj};
+    }
+    const weeks = Array.from({length:104}, (_,i) => weekDetail(i+1));
+
     const projects = [
       {
         level: "1",
-        area: "Telemetry & Host Security",
-        title: "Windows Server Sysmon Deployment & Audit Baseline Configuration",
+        area: { es: "Telemetría y Endpoints", en: "Telemetry & Host Security" },
+        title: {
+          es: "Detección y Recolección de Telemetría Local en Windows Server",
+          en: "Windows Server Sysmon Deployment & Audit Baseline Configuration"
+        },
         difficulty: "Principiante-Intermedio",
         tech: "Windows Server 2022, Microsoft Sysmon, PowerShell, Event Viewer",
-        obj: "Configure and secure Windows Server system telemetry using advanced monitoring filters.",
-        scope: "Deploying Sysmon within a secure target VM, importing an optimized audit policy (SwiftOnSecurity XML), and auditing system states strictly via command-line utilities.",
-        evid: "Automated trigger logging of malicious parent-child process interactions (e.g., cmd spawning from mshta) showing exact Event IDs.",
-        deliv: "PowerShell automation installation script, customized SwiftOnSecurity-based XML configuration file.",
-        lessons: "Defensive telemetry is useless unless noise is filtered at the endpoint level to avoid exhausting resources and storage."
+        obj: {
+          es: "Establecer la monitorización continua y robusta de eventos de sistema críticos de forma local en un servidor corporativo.",
+          en: "Configure and secure Windows Server system telemetry using advanced monitoring filters."
+        },
+        scope: {
+          es: "Implementación en una máquina virtual de Windows Server. Configuración de directivas de auditoría detalladas y centralización local de logs mediante PowerShell.",
+          en: "Deploying Sysmon within a secure target VM, importing an optimized audit policy (SwiftOnSecurity XML), and auditing system states strictly via command-line utilities."
+        },
+        evid: {
+          es: "Generación de alertas al ejecutar software que intente eludir controles de Windows Defender y logs Sysmon capturando la inyección en memoria.",
+          en: "Automated trigger logging of malicious parent-child process interactions (e.g., cmd spawning from mshta) showing exact Event IDs."
+        },
+        deliv: {
+          es: "Script de PowerShell instalador y configurador de la suite Sysmon y archivos XML de configuración aplicados.",
+          en: "PowerShell automation installation script, customized SwiftOnSecurity-based XML configuration file."
+        },
+        lessons: {
+          es: "El monitoreo efectivo radica en un filtrado estricto a nivel de endpoint para evitar la saturación de espacio en disco con falsos positivos corporativos ordinarios.",
+          en: "Defensive telemetry is useless unless noise is filtered at the endpoint level to avoid exhausting resources and storage."
+        }
       },
       {
         level: "1",
-        area: "Network Monitoring",
-        title: "Headless Network Traffic Analysis and Packet Extraction Forensic Case",
+        area: { es: "Monitoreo e Inspección de Red", en: "Network Monitoring" },
+        title: {
+          es: "Análisis Forense PCAP de Intrusión y Exfiltración de Datos",
+          en: "Headless Network Traffic Analysis and Packet Extraction Forensic Case"
+        },
         difficulty: "Intermedio",
         tech: "tcpdump, Wireshark, tshark",
-        obj: "Inspect raw packet streams to reconstruct and document a malicious network exfiltration scenario.",
-        scope: "Capturing protocol traffic using tcpdump BPF filtering, extracting suspicious binaries, and analyzing anomalous DNS requests.",
-        evid: "Documented evidence of decoded DNS tunnel payloads and reconstruction of the exact session containing compromised database records.",
-        deliv: "Markdown write-up detailing BPF filters used, extracted payloads, and malicious asset indicators (IPs, URIs).",
-        lessons: "Understanding standard network baselines is critical to quickly isolating high-risk exfiltrations amidst massive streams of normal traffic."
+        obj: {
+          es: "Examinar una traza de captura de red comprometida para rastrear el vector de ataque inicial, la actividad de red y la posterior fuga de datos de la red interna.",
+          en: "Inspect raw packet streams to reconstruct and document a malicious network exfiltration scenario."
+        },
+        scope: {
+          es: "Filtro de archivos PCAP mediante expresiones BPF de tcpdump y mapeo detallado de flujos en Wireshark.",
+          en: "Capturing protocol traffic using tcpdump BPF filtering, extracting suspicious binaries, and analyzing anomalous DNS requests."
+        },
+        evid: {
+          es: "Localización exacta de tramas DNS maliciosas conteniendo payloads codificados y reconstrucción de la sesión HTTP donde se sustrajeron los datos confidenciales.",
+          en: "Documented evidence of decoded DNS tunnel payloads and reconstruction of the exact session containing compromised database records."
+        },
+        deliv: {
+          es: "Documento en Markdown con capturas claras de tramas comprometidas y secuencia exacta de comandos utilizados en terminal (tshark).",
+          en: "Markdown write-up detailing BPF filters used, extracted payloads, and malicious asset indicators (IPs, URIs)."
+        },
+        lessons: {
+          es: "El análisis de red es inútil si no se tiene una línea base de tráfico habitual corporativo para contrastar patrones de comportamiento del atacante.",
+          en: "Understanding standard network baselines is critical to quickly isolating high-risk exfiltrations amidst massive streams of normal traffic."
+        }
       },
       {
         level: "2",
-        area: "Detection Engineering",
-        title: "Sigma Rules Engineering & Simulated Adversary Validation",
+        area: { es: "Ingeniería de Detección", en: "Detection Engineering" },
+        title: {
+          es: "Framework de Reglas Sigma y Validación con Evidencias Reproducibles",
+          en: "Sigma Rules Engineering & Simulated Adversary Validation"
+        },
         difficulty: "Intermedio-Avanzado",
         tech: "Sigma Rules, Atomic Red Team, PowerShell, Yaml",
-        obj: "Design, test, and commit platform-agnostic detection rules verified against simulated attacks.",
-        scope: "Developing robust Sigma Yaml alert configurations. Simulating the threat vectors on target systems utilizing Atomic Red Team frameworks.",
-        evid: "A structured logging audit showing the exact Sigma rule matching the telemetry generated by Atomic Red Team tests.",
-        deliv: "A curated GitHub repository containing custom validated Sigma rules and validation logs.",
-        lessons: "A detection signature cannot be considered secure or production-ready until it has been actively verified against the exact threat vectors it targets."
+        obj: {
+          es: "Diseñar, validar e implementar firmas de detección independientes capaces de detectar intentos de evasión de defensas mediante ejecuciones atípicas.",
+          en: "Design, test, and commit platform-agnostic detection rules verified against simulated attacks."
+        },
+        scope: {
+          es: "Desarrollo de firmas Yaml basadas en la taxonomía de Sigma. Ejecución de pruebas controladas utilizando Atomic Red Team para reproducir la telemetría exacta en el log local.",
+          en: "Developing robust Sigma Yaml alert configurations. Simulating the threat vectors on target systems utilizing Atomic Red Team frameworks."
+        },
+        evid: {
+          es: "Evidencia reproducible mostrando que la firma Sigma se dispara correctamente al ejecutarse una prueba de ataque controlada y no interfiere con procesos habituales.",
+          en: "A structured logging audit showing the exact Sigma rule matching the telemetry generated by Atomic Red Team tests."
+        },
+        deliv: {
+          es: "Repositorio GitHub conteniendo las reglas de detección elaboradas y el script de validación documentado paso a paso.",
+          en: "A curated GitHub repository containing custom validated Sigma rules and validation logs."
+        },
+        lessons: {
+          es: "Una regla de detección no es robusta hasta que pasa por pruebas exhaustivas contra ataques activos de forma automatizada.",
+          en: "A detection signature cannot be considered secure or production-ready until it has been actively verified against the exact threat vectors it targets."
+        }
       },
       {
         level: "2",
-        area: "SIEM & Logging Infrastructure",
-        title: "Centralized Logging SOC Dashboard with Splunk & Docker",
+        area: { es: "Ingeniería SOC", en: "SIEM & Logging Infrastructure" },
+        title: {
+          es: "Centralización y Dashboard de Splunk para Ataques Web",
+          en: "Centralized Logging SOC Dashboard with Splunk & Docker"
+        },
         difficulty: "Intermedio-Avanzado",
         tech: "Docker Compose, Splunk Enterprise, Syslog, Nginx/IIS Logs",
-        obj: "Establish a complete logging infrastructure that monitors and parses anomalies on a central dashboard.",
-        scope: "Using Docker Compose to deploy Splunk, ingesting web server logs, and building search query visualizations.",
-        evid: "Real-time alerts triggered on the dashboard during simulated SQL injection and directory traversal attacks.",
-        deliv: "Docker Compose YAML build files, Splunk XML dashboard templates, and an analytical monitoring runbook.",
-        lessons: "SOC dashboards must be designed for swift visual triage, optimizing analyst response times by focusing strictly on high-severity alerts."
+        obj: {
+          es: "Estructurar una arquitectura de centralización y monitoreo de eventos de servidores web utilizando contenedores Docker.",
+          en: "Establish a complete logging infrastructure that monitors and parses anomalies on a central dashboard."
+        },
+        scope: {
+          es: "Despliegue automatizado de Splunk con contenedores, configuración de indexación de logs de acceso web y el posterior desarrollo de dashboards analíticos interactivos.",
+          en: "Using Docker Compose to deploy Splunk, ingesting web server logs, and building search query visualizations."
+        },
+        evid: {
+          es: "Alertas disparadas en tiempo real durante inyecciones SQL o intentos de Path Traversal.",
+          en: "Real-time alerts triggered on the dashboard during simulated SQL injection and directory traversal attacks."
+        },
+        deliv: {
+          es: "Código Docker Compose completo, esquema XML detallado del panel de control e informe analítico explicativo.",
+          en: "Docker Compose YAML build files, Splunk XML dashboard templates, and an analytical monitoring runbook."
+        },
+        lessons: {
+          es: "Los dashboards del SOC deben estar diseñados para agilizar el triaje visual disminuyendo el tiempo de investigación por parte de analistas de primer nivel.",
+          en: "SOC dashboards must be designed for swift visual triage, optimizing analyst response times by focusing strictly on high-severity alerts."
+        }
       },
       {
         level: "3",
-        area: "Incident Response",
-        title: "Enterprise Incident Response Case Study & Forensic Report (SANS Framework)",
+        area: { es: "Respuesta a Incidentes", en: "Incident Response" },
+        title: {
+          es: "Caso de Estudio Completo e Informe de Respuesta a Incidentes (IR)",
+          en: "Enterprise Incident Response Case Study & Forensic Report (SANS Framework)"
+        },
         difficulty: "Difícil",
         tech: "SANS Incident Response Framework, Forensics CLI Tools, Markdown",
-        obj: "Produce a formal executive and technical incident report following an enterprise compromise scenario.",
-        scope: "Drafting an analytical assessment of an intrusion, including executive summaries of impact and technical breakdowns.",
-        evid: "Unified attack timeline, identification of defensive gaps, containment strategies, and recovery roadmap.",
-        deliv: "An industry-standard SANS-structured Incident Response Report suitable for presentation in technical interviews.",
-        lessons: "Incident response is not purely technical; presenting business impact and risk mitigation to leadership is as vital as the technical remediation."
+        obj: {
+          es: "Elaborar un informe corporativo formal de respuesta ante un incidente simulado de compromiso global por Ransomware.",
+          en: "Produce a formal executive and technical incident report following an enterprise compromise scenario."
+        },
+        scope: {
+          es: "Estructuración del informe siguiendo la metodología NIST/SANS. Debe contener un resumen ejecutivo para directores de negocio y una sección técnica profunda.",
+          en: "Drafting an analytical assessment of an intrusion, including executive summaries of impact and technical breakdowns."
+        },
+        evid: {
+          es: "Timeline unificado del ataque, brechas identificadas, plan de contención de amenazas, erradicación y plan de remediación técnica de AD.",
+          en: "Unified attack timeline, identification of defensive gaps, containment strategies, and recovery roadmap."
+        },
+        deliv: {
+          es: "Informe formal estructurado de Respuesta a Incidentes listo para ser presentado en entrevistas laborales.",
+          en: "An industry-standard SANS-structured Incident Response Report suitable for presentation in technical interviews."
+        },
+        lessons: {
+          es: "La efectividad del analista no solo radica en lo técnico; si no se comunica el impacto financiero y de negocio de forma comprensible a la gerencia, el informe pierde su valor estratégico.",
+          en: "Incident response is not purely technical; presenting business impact and risk mitigation to leadership is as vital as the technical remediation."
+        }
       },
       {
         level: "3",
-        area: "Cloud Forensic Investigation",
-        title: "Multi-Cloud IAM Hijacking & CloudTrail Exfiltration Forensic Deep Dive",
+        area: { es: "Investigación Forense Cloud", en: "Cloud Forensic Investigation" },
+        title: {
+          es: "Secuestro de Identidad Multi-Cloud y Exfiltración de Datos CloudTrail",
+          en: "Multi-Cloud IAM Hijacking & CloudTrail Exfiltration Forensic Deep Dive"
+        },
         difficulty: "Difícil",
         tech: "AWS CloudTrail, Volatility 3, Autopsy, Athena",
-        obj: "Investigate a high-severity cloud environment compromise starting from an leaked API key to complete administrative privilege escalation.",
-        scope: "Parsing CloudTrail JSON log exports, mapping API user actions, isolating compromised metadata service (IMDS) calls, and tracing data exfiltration.",
-        evid: "Correlated trace demonstrating the lateral transition from a low-privilege instance profile to administrative policy manipulation.",
-        deliv: "Cloud Forensic Incident Report tracking specific API calls, exfiltration locations, and recommended IAM remediation steps.",
-        lessons: "In cloud environments, identity is the perimeter. Understanding the sequence of API calls is equivalent to tracking process memory on local systems."
+        obj: {
+          es: "Investigar un compromiso de infraestructura de nube iniciado por fuga de credenciales API hasta escalada administrativa total.",
+          en: "Investigate a high-severity cloud environment compromise starting from an leaked API key to complete administrative privilege escalation."
+        },
+        scope: {
+          es: "Análisis forense de logs JSON de CloudTrail, mapeo de llamadas de APIs, accesos sospechosos al servicio de metadatos (IMDS) y flujos exfiltrados.",
+          en: "Parsing CloudTrail JSON log exports, mapping API user actions, isolating compromised metadata service (IMDS) calls, and tracing data exfiltration."
+        },
+        evid: {
+          es: "Línea de tiempo de logs CloudTrail demostrando el escalado de privilegios y las transiciones de rol maliciosas.",
+          en: "Correlated trace demonstrating the lateral transition from a low-privilege instance profile to administrative policy manipulation."
+        },
+        deliv: {
+          es: "Reporte de investigación forense en la nube documentando llamadas de API maliciosas, IPs de origen y remedio IAM sugerido.",
+          en: "Cloud Forensic Incident Report tracking specific API calls, exfiltration locations, and recommended IAM remediation steps."
+        },
+        lessons: {
+          es: "En entornos de nube la identidad es el nuevo perímetro. Comprender las APIs de auditoría es equivalente a analizar logs locales de kernel en servidores locales.",
+          en: "In cloud environments, identity is the perimeter. Understanding the sequence of API calls is equivalent to tracking process memory on local systems."
+        }
       }
     ];
 
-    // Checklist Data - Observable & Measurable
     const finalChecklist = [
       {
-        group: "SOC Operations & Detection Engineering",
+        group: { es: "Operaciones SOC e Ingeniería de Detección", en: "SOC Operations & Detection Engineering" },
         items: [
-          "I can write complex Splunk queries (SPL) in under 5 minutes using stats, eval, transaction, and rex without referring to search manuals.",
-          "I can identify system anomalies and trace process relationships locally using Process Explorer and map them to Sysmon Event IDs (ID 1, 3, 11).",
-          "I have written and validated 5 custom Sigma rules that alert on malicious activities simulated with Atomic Red Team.",
-          "I can draft a schema diagram mapping how web server logs capture SQL injection payloads.",
-          "I have deployed a localized SOC infrastructure utilizing Docker Compose to automatically ingest host and network event telemetry."
+          { es: "Puedo escribir consultas Splunk complejas (SPL) en menos de 5 minutos usando stats, eval, transaction y rex sin ayuda de guías.", en: "I can write complex Splunk queries (SPL) in under 5 minutes using stats, eval, transaction, and rex without referring to search manuals." },
+          { es: "Sé auditar e identificar anomalías leyendo el árbol de ejecución de procesos mediante Process Explorer y relacionarlo con Sysmon (ID 1, 3, 11).", en: "I can identify system anomalies and trace process relationships locally using Process Explorer and map them to Sysmon Event IDs (ID 1, 3, 11)." },
+          { es: "He redactado y validado de forma práctica 5 reglas Sigma que disparan alertas precisas ante ejecuciones simuladas de Atomic Red Team.", en: "I have written and validated 5 custom Sigma rules that alert on malicious activities simulated with Atomic Red Team." },
+          { es: "Puedo esquematizar la salida técnica de telemetría necesaria para documentar un intento de ataque por inyección SQL en logs de Nginx.", en: "I can draft a schema diagram mapping how web server logs capture SQL injection payloads." },
+          { es: "He desplegado un entorno de logs SOC centralizado funcional montado en disco local con contenedores Docker Compose.", en: "I have deployed a localized SOC infrastructure utilizing Docker Compose to automatically ingest host and network event telemetry." }
         ]
       },
       {
-        group: "Digital Forensics & Incident Response (DFIR)",
+        group: { es: "Forense Digital e Incident Response (DFIR)", en: "Digital Forensics & Incident Response (DFIR)" },
         items: [
-          "I can execute secure RAM captures from a CLI and run volatile memory searches utilizing Volatility 3.",
-          "I can reconstruct a threat timeline in Autopsy by analyzing ShellBags, Prefetch files, and registry hives.",
-          "I can manually deobfuscate basic malicious PowerShell scripts (Base64 encoding, obfuscation wrappers) without web assistance.",
-          "I can extract and parse corporate email headers to audit SPF, DKIM, and DMARC configurations using command line tools.",
-          "I have completed a formal, publication-ready Incident Response (IR) report following the SANS SP 800-61 incident framework."
+          { es: "Puedo ejecutar la extracción segura de la memoria RAM en sistemas comprometidos utilizando CLI y volcarla a un análisis en Volatility 3.", en: "I can execute secure RAM captures from a CLI and run volatile memory searches utilizing Volatility 3." },
+          { es: "Sé reconstruir la secuencia temporal (timeline) de intrusión identificando accesos a registros ShellBags, Prefetch y claves del Registro en Autopsy.", en: "I can reconstruct a threat timeline in Autopsy by analyzing ShellBags, Prefetch files, and registry hives." },
+          { es: "Puedo desofuscar de forma manual y sin asistencia scripts maliciosos básicos en PowerShell (Base64, wrappers de ofuscación).", en: "I can manually deobfuscate basic malicious PowerShell scripts (Base64 encoding, obfuscation wrappers) without web assistance." },
+          { es: "Sé extraer, validar e interrogar las cabeceras de emails de phishing verificando registros SPF, DKIM y DMARC con CLI.", en: "I can extract and parse corporate email headers to audit SPF, DKIM, and DMARC configurations using command line tools." },
+          { es: "He elaborado un informe formal de Respuesta a Incidentes (IR) completo bajo la metodología SANS y sé defenderlo técnicamente.", en: "I have completed a formal, publication-ready Incident Response (IR) report following the SANS SP 800-61 incident framework." }
         ]
       },
       {
-        group: "Network & Cloud Security Dissection",
+        group: { es: "Redes y Defensa Cloud", en: "Network & Cloud Security Dissection" },
         items: [
-          "I can initiate tcpdump packet captures over headless terminal consoles applying custom BPF filtering parameters.",
-          "I can locate ARP spoofing, DNS tunnels, and anomalous data dumps when inspecting raw packet capture files in Wireshark.",
-          "I have built and tested 3 custom intrusion detection signatures for Suricata or Snort.",
-          "I can parse JSON AWS CloudTrail and VPC Flow logs to isolate metadata token abuse (IMDSv1 vs v2) and privilege escalation.",
-          "I can draft and secure an enterprise CIDR network topology using Packet Tracer or GNS3 to prevent lateral domain hops."
+          { es: "Puedo programar comandos de captura tcpdump desde consola filtrando tráfico específico de una subred por puertos y protocolos de red.", en: "I can initiate tcpdump packet captures over headless terminal consoles applying custom BPF filtering parameters." },
+          { es: "Sé identificar patrones de ataque comunes (ARP spoofing, DNS tunneling, exfiltraciones) inspeccionando paquetes con Wireshark.", en: "I can locate ARP spoofing, DNS tunnels, and anomalous data dumps when inspecting raw packet capture files in Wireshark." },
+          { es: "He construido y testeado de forma práctica 3 firmas completas para sistemas de prevención de intrusiones (Snort / Suricata).", en: "I have built and tested 3 custom intrusion detection signatures for Suricata or Snort." },
+          { es: "Puedo analizar logs JSON de AWS CloudTrail y logs de flujo VPC para aislar fugas de tokens IMDSv1 y escaladas IAM.", en: "I can parse JSON AWS CloudTrail and VPC Flow logs to isolate metadata token abuse (IMDSv1 vs v2) and privilege escalation." },
+          { es: "Sé desplegar topologías lógicas de red seguras usando Packet Tracer o GNS3 documentando su direccionamiento IP/CIDR corporativo.", en: "I can draft and secure an enterprise CIDR network topology using Packet Tracer or GNS3 to prevent lateral domain hops." }
         ]
       }
     ];
 
-    // Element helper
+    // --- HELPER FUNCTIONS ---
+    // Helper to create DOM elements with attributes and children
     function el(tag, attrs={}, children=[]) {
       const node = document.createElement(tag);
       for (const [k,v] of Object.entries(attrs)) {
@@ -819,7 +1445,16 @@
       return node;
     }
 
-    // Custom Toast Alert trigger
+    // Dynamic Tag Color Helper
+    function difficultyClass(diff) {
+      if (!diff) return "free";
+      const d = diff.toLowerCase();
+      if (d.includes("principiante") || d.includes("beginner")) return "free";
+      if (d.includes("intermedio") || d.includes("intermediate")) return "medium";
+      return "hard";
+    }
+
+    // Custom Toast Alert
     function showToast(text) {
       const toast = document.getElementById("toast");
       document.getElementById("toast-text").innerText = text;
@@ -827,44 +1462,265 @@
       setTimeout(() => { toast.style.display = "none"; }, 3500);
     }
 
-    // Render Technical Phase Specification Tables
+    // --- RENDER FUNCTIONS WITH DYNAMIC LOCALIZATION ---
+    function renderDiagnostic() {
+      const qText = document.getElementById("diag-q-text");
+      const optContainer = document.getElementById("diag-options");
+      const resContainer = document.getElementById("diag-res");
+      
+      if (currentDiagIndex < diagnosticQuestions.length) {
+        const item = diagnosticQuestions[currentDiagIndex];
+        qText.innerText = (currentLang === "es" ? `Pregunta ${currentDiagIndex + 1} de ${diagnosticQuestions.length}: ` : `Question ${currentDiagIndex + 1} of ${diagnosticQuestions.length}: `) + item.q[currentLang];
+        optContainer.innerHTML = "";
+        resContainer.style.display = "none";
+
+        item.opts.forEach((opt, idx) => {
+          const div = el("div", { class: "diagnostic-option" });
+          div.innerHTML = `<input type="radio" name="diag-opt" id="opt-${idx}" value="${opt.code}" /> <label for="opt-${idx}">${opt.text[currentLang]}</label>`;
+          div.addEventListener("click", () => {
+            document.getElementById(`opt-${idx}`).checked = true;
+            setTimeout(() => {
+              diagResults.push(opt.code);
+              currentDiagIndex++;
+              renderDiagnostic();
+            }, 300);
+          });
+          optContainer.appendChild(div);
+        });
+      } else {
+        qText.innerText = currentLang === "es" ? "Evaluación Diagnóstica Finalizada" : "Assessment Complete";
+        optContainer.innerHTML = "";
+        resContainer.style.display = "block";
+        
+        const needsPhase0 = diagResults.includes("F0");
+        if (needsPhase0) {
+          resContainer.className = "diagnostic-result warning";
+          resContainer.innerHTML = currentLang === "es" 
+            ? "<strong>Recomendación: Iniciación Recomendada desde Fase 0</strong><br/>Tu perfil indica que necesitas consolidar bases de administración de sistemas, uso de la terminal de comandos y control de versiones antes de ingresar a la rigurosa fase de inspección de red de la Fase 1. Completar la Fase 0 te garantizará el éxito técnico."
+            : "<strong>Recommendation: Step 0 is Required</strong><br/>Your baseline indicates a need to solidify system administration, CLI usage, and version control before stepping into the rigorous network inspection of Phase 1. Completing Phase 0 first will guarantee technical success.";
+        } else {
+          resContainer.className = "diagnostic-result success";
+          resContainer.innerHTML = currentLang === "es"
+            ? "<strong>Recomendación: Perfil Apto para Fase 1 Directa</strong><br/>Cuentas con las destrezas de sistemas, uso de terminales y virtualización recomendadas para adentrarte de inmediato en la Fase 1 (Redes y Telemetría de Red). ¡Puedes comenzar la ruta directamente desde allí!"
+            : "<strong>Recommendation: Direct Phase 1 Entry Approved</strong><br/>You possess the system, CLI, and virtualization skills recommended to dive straight into Phase 1 (Networking and Network Telemetry). You can start the roadmap directly from there!";
+        }
+        
+        const resetBtn = el("button", { class: "button", html: currentLang === "es" ? "Reiniciar prueba" : "Restart Assessment", style: "margin-top: 15px;" });
+        resetBtn.addEventListener("click", () => {
+          currentDiagIndex = 0;
+          diagResults = [];
+          renderDiagnostic();
+        });
+        resContainer.appendChild(resetBtn);
+      }
+    }
+
+    function setLanguage(lang) {
+      currentLang = lang;
+      localStorage.setItem("bt_selected_lang", lang);
+      
+      // Update toggle buttons active class
+      document.getElementById("btn-es").classList.toggle("active", lang === "es");
+      document.getElementById("btn-en").classList.toggle("active", lang === "en");
+
+      // Set lang attribute on root element
+      document.documentElement.lang = lang;
+
+      // Translate static page nodes tagged with data-i18n
+      translatePage();
+
+      // Clear and re-render dynamic sections with translated structures
+      renderFastTrackBanner();
+      document.getElementById("phaseTables").innerHTML = "";
+      renderPhaseTables();
+      renderStaticTables();
+      populateDropdowns();
+      renderResources();
+      renderCertifications();
+      renderWeeksSchedule();
+      document.getElementById("projectGrid").innerHTML = "";
+      renderProjects();
+      document.getElementById("finalChecklist").innerHTML = "";
+      renderChecklist();
+
+      // Reset diagnostic view
+      currentDiagIndex = 0;
+      diagResults = [];
+      renderDiagnostic();
+      
+      // Ensure nav is highlighted properly
+      highlightNav();
+    }
+
+    function translatePage() {
+      const dict = translations[currentLang];
+      document.querySelectorAll("[data-i18n]").forEach(node => {
+        const key = node.getAttribute("data-i18n");
+        if (dict[key]) {
+          node.innerHTML = dict[key];
+        }
+      });
+
+      // Placeholders and static UI elements that require specific attributes
+      document.getElementById("resourceSearch").placeholder = dict.res_search_ph;
+      document.getElementById("weekSearch").placeholder = dict.sched_search_ph;
+      document.getElementById("opt-all-phases").innerText = dict.res_all_phases;
+      document.getElementById("opt-all-diff").innerText = dict.res_all_diffs;
+    }
+
+    function renderFastTrackBanner() {
+      const dict = translations[currentLang];
+      document.getElementById("ft-title").innerHTML = dict.ft_title;
+      document.getElementById("ft-desc").innerHTML = dict.ft_desc;
+      document.getElementById("ft-step1-title").innerHTML = dict.ft_step1_title;
+      document.getElementById("ft-step1-desc").innerHTML = dict.ft_step1_desc;
+      document.getElementById("ft-step2-title").innerHTML = dict.ft_step2_title;
+      document.getElementById("ft-step2-desc").innerHTML = dict.ft_step2_desc;
+      document.getElementById("ft-step3-title").innerHTML = dict.ft_step3_title;
+      document.getElementById("ft-step3-desc").innerHTML = dict.ft_step3_desc;
+    }
+
+    function renderStaticTables() {
+      const dict = translations[currentLang];
+      
+      // Method weekly allocation
+      const tAlloc = document.getElementById("table-allocation");
+      tAlloc.innerHTML = `
+        <thead>
+          <tr>
+            <th>${dict.th_activity}</th>
+            <th>${dict.th_hours}</th>
+            <th>${dict.th_obj}</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${staticTablesData.allocation.map(item => `
+            <tr>
+              <td><strong>${item.activity[currentLang]}</strong></td>
+              <td><code>${item.hours}</code></td>
+              <td>${item.obj[currentLang]}</td>
+            </tr>
+          `).join("")}
+        </tbody>
+      `;
+
+      // Method weekly recommended schedule
+      const tSched = document.getElementById("table-schedule");
+      tSched.innerHTML = `
+        <thead>
+          <tr>
+            <th>${dict.th_day}</th>
+            <th>${dict.th_sched_act}</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${staticTablesData.schedule.map(item => `
+            <tr>
+              <td><strong>${item.day[currentLang]}</strong></td>
+              <td>${item.act[currentLang]}</td>
+            </tr>
+          `).join("")}
+        </tbody>
+      `;
+
+      // Curriculum Map table
+      const tCur = document.getElementById("table-curriculum");
+      tCur.innerHTML = `
+        <thead>
+          <tr>
+            <th>${dict.th_level}</th>
+            <th>${dict.th_cur_phase}</th>
+            <th>${dict.th_foco}</th>
+            <th>${dict.th_ecosystem}</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${staticTablesData.curriculum.map(item => `
+            <tr>
+              <td><strong>${item.lvl[currentLang]}</strong></td>
+              <td><strong>${item.phase[currentLang]}</strong></td>
+              <td>${item.focus[currentLang]}</td>
+              <td><code>${item.tech}</code></td>
+            </tr>
+          `).join("")}
+        </tbody>
+      `;
+    }
+
     function renderPhaseTables() {
       const root = document.getElementById("phaseTables");
+      const dict = translations[currentLang];
+
       phases.forEach(phase => {
-        root.appendChild(el("div", {class:"phase-header", id: phase.id}, [
-          el("div", {}, [el("h3", {html:phase.name}), el("p", {html:phase.goal})]),
-          el("span", {class:"badge", html:phase.duration})
+        root.appendChild(el("div", { class: "phase-header", id: phase.id }, [
+          el("div", {}, [
+            el("h3", { html: phase.name[currentLang] }), 
+            el("p", { html: phase.goal[currentLang] })
+          ]),
+          el("span", { class: "badge", html: phase.duration[currentLang] })
         ]));
-        const wrap = el("div", {class:"table-wrap"});
+
+        const wrap = el("div", { class: "table-wrap" });
         const table = el("table");
-        table.innerHTML = `<thead><tr><th>ID</th><th>Materia de Estudio</th><th>Technical Objective</th><th>Support Resources</th><th>Duration</th><th>Prerequisites</th><th>Portfolio Output</th><th>Assessment Criteria</th></tr></thead><tbody></tbody>`;
+        table.innerHTML = `
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>${dict.th_foco}</th>
+              <th>${dict.th_obj}</th>
+              <th>${dict.th_tools}</th>
+              <th>${dict.th_hours}</th>
+              <th>Reqs</th>
+              <th>${dict.th_deliverable}</th>
+              <th>Evaluation</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        `;
         const tbody = table.querySelector("tbody");
+        
         phase.rows.forEach(r => {
           const tr = el("tr");
-          r.forEach((c, idx) => tr.appendChild(el("td", {html: idx===1 ? `<strong>${c}</strong>` : c})));
+          
+          // ID Cell
+          tr.appendChild(el("td", { html: `<code>${r[0]}</code>` }));
+          // Focus/Subject Cell
+          tr.appendChild(el("td", { html: `<strong>${r[1][currentLang] || r[1]}</strong>` }));
+          // Objective Cell
+          tr.appendChild(el("td", { html: r[2][currentLang] || r[2] }));
+          // Support tools Cell
+          tr.appendChild(el("td", { html: r[3] }));
+          // Duration Cell
+          tr.appendChild(el("td", { html: r[4][currentLang] || r[4] }));
+          // Reqs Cell
+          tr.appendChild(el("td", { html: r[5][currentLang] || r[5] }));
+          // Deliverable Output Cell
+          tr.appendChild(el("td", { html: `<code>${r[6][currentLang] || r[6]}</code>` }));
+          // Evaluation Criterion Cell
+          tr.appendChild(el("td", { html: r[7][currentLang] || r[7] }));
+
           tbody.appendChild(tr);
         });
+
         wrap.appendChild(table);
         root.appendChild(wrap);
       });
     }
 
-    // Populate dropdown filters
-    function populateFilters() {
+    function populateDropdowns() {
       const phaseSel = document.getElementById("phaseFilter");
-      [...new Set(resources.map(r => r.phase))].forEach(p => phaseSel.appendChild(el("option", {value:p, html:p})));
+      phaseSel.innerHTML = `<option value="all" id="opt-all-phases">${translations[currentLang].res_all_phases}</option>`;
+      [...new Set(resources.map(r => r.phase))].forEach(p => {
+        phaseSel.appendChild(el("option", { value: p, html: p }));
+      });
+
       const diffSel = document.getElementById("difficultyFilter");
-      [...new Set(resources.map(r => r.difficulty))].forEach(d => diffSel.appendChild(el("option", {value:d, html:d})));
+      diffSel.innerHTML = `<option value="all" id="opt-all-diff">${translations[currentLang].res_all_diffs}</option>`;
+      [...new Set(resources.map(r => r.difficulty))].forEach(d => {
+        diffSel.appendChild(el("option", { value: d, html: d }));
+      });
     }
 
-    // Set difficulty tag styles
-    function difficultyClass(diff) {
-      if (diff === "Principiante") return "free";
-      if (diff === "Intermedio") return "medium";
-      return "hard";
-    }
-
-    // Render Resource Library
     function renderResources() {
       const q = document.getElementById("resourceSearch").value.toLowerCase();
       const phase = document.getElementById("phaseFilter").value;
@@ -873,29 +1729,35 @@
       grid.innerHTML = "";
       
       resources.filter(r => {
-        const hay = Object.values(r).join(" ").toLowerCase();
-        return (!q || hay.includes(q)) && (phase === "all" || r.phase === phase) && (difficulty === "all" || r.difficulty === difficulty);
+        const payloadStr = (
+          r.name + " " + 
+          r.phase + " " + 
+          (r.subject[currentLang] || "") + " " + 
+          (r.learn[currentLang] || "")
+        ).toLowerCase();
+        return (!q || payloadStr.includes(q)) && (phase === "all" || r.phase === phase) && (difficulty === "all" || r.difficulty === difficulty);
       }).forEach((r, idx) => {
         const id = "res-bt2-en-" + resources.indexOf(r);
         const checked = localStorage.getItem(id) === "true";
-        const card = el("article", {class:"resource-card"});
+        const card = el("article", { class: "resource-card" });
         card.innerHTML = `
           <div class="tag-row">
             <span class="tag">${r.phase}</span>
-            <span class="tag free">${r.status}</span>
+            <span class="tag free">${r.status[currentLang]}</span>
             <span class="tag ${difficultyClass(r.difficulty)}">${r.difficulty}</span>
           </div>
           <h3><a href="${r.url}" target="_blank" rel="noopener">${r.name}</a></h3>
-          <p><strong>Topic:</strong> ${r.subject} - ${r.source} - ${r.language}</p>
+          <p><strong>Topic:</strong> ${r.subject[currentLang]} - ${r.source} - ${r.language[currentLang]}</p>
           <p><strong>Prerequisites:</strong> ${r.prereq}</p>
-          <p><strong>Learn:</strong> ${r.learn}</p>
-          <p><strong>Practice:</strong> ${r.exercises}</p>
-          <p><strong>Deliverable:</strong> ${r.project}</p>
-          <p><strong>Mastery:</strong> ${r.mastery}</p>
+          <p><strong>Learn:</strong> ${r.learn[currentLang]}</p>
+          <p><strong>Practice:</strong> ${r.exercises[currentLang]}</p>
+          <p><strong>Deliverable:</strong> ${r.project[currentLang]}</p>
+          <p><strong>Mastery:</strong> ${r.mastery[currentLang]}</p>
           <label class="checkline">
             <input type="checkbox" ${checked ? "checked" : ""} data-progress="${id}" /> 
-            Mark as completed
-          </label>`;
+            ${currentLang === "es" ? "Marcar como completado" : "Mark as completed"}
+          </label>
+        `;
         grid.appendChild(card);
       });
       
@@ -904,105 +1766,117 @@
         cb.addEventListener("change", e => {
           localStorage.setItem(e.target.dataset.progress, e.target.checked);
           if (e.target.checked) {
-            showToast("Progress state updated dynamically 🛡️");
+            showToast(translations[currentLang].toast_save_resource);
           }
         });
       });
     }
 
-    // Determine week segments and render schedule
-    function phaseForWeek(w) { return weekSegments.find(s => w >= s.start && w <= s.end); }
-    function weekDetail(w) {
-      const s = phaseForWeek(w);
-      const local = w - s.start + 1;
-      const span = s.end - s.start + 1;
-      let action = "Read assigned documentation, analyze target packet traces/event logs, and complete guided sandbox exercises.";
-      if (local === 1) action = "Módulo kickoff: Blueprint target architecture, configure host environments, and define tracking tasks.";
-      if (local === Math.ceil(span/2)) action = "Mid-module check: Complete unguided scenarios, evaluate telemetry outputs, and review logs.";
-      if (local === span) action = "Deliverable sign-off: Compile your analysis reports, push files to GitHub using Git, and run Anki.";
-      return {week:w, phase:s.phase, focus:s.focus, resources:s.resources, deliverable:s.deliverable, action};
+    function renderCertifications() {
+      const grid = document.getElementById("cert-grid");
+      grid.innerHTML = "";
+      certsData.forEach(c => {
+        const card = el("div", { class: "card" });
+        card.innerHTML = `
+          <h3><span class="cert-badge pro">${c.name}</span></h3>
+          <p><strong>${c.status[currentLang]}</strong></p>
+          <p>${c.desc[currentLang]}</p>
+          <ul>
+            <li><strong>Cost:</strong> ${c.cost}</li>
+            <li><strong>Format:</strong> ${c.format[currentLang]}</li>
+          </ul>
+        `;
+        grid.appendChild(card);
+      });
     }
-    const weeks = Array.from({length:104}, (_,i) => weekDetail(i+1));
 
-    function renderWeeks() {
+    function renderWeeksSchedule() {
       const q = document.getElementById("weekSearch").value.toLowerCase();
       const filtered = weeks.filter(w => {
-        const hay = Object.values(w).join(" ").toLowerCase();
-        return (!q || hay.includes(q));
+        const payloadStr = (
+          w.phase[currentLang] + " " + 
+          w.focus[currentLang] + " " + 
+          w.resources + " " + 
+          w.action[currentLang] + " " + 
+          w.deliverable[currentLang]
+        ).toLowerCase();
+        return (!q || payloadStr.includes(q));
       });
       const root = document.getElementById("weekTable");
-      root.innerHTML = `<table>
-        <thead>
-          <tr>
-            <th>Week</th>
-            <th>Phase</th>
-            <th>Study Focus</th>
-            <th>Tools & Resources</th>
-            <th>Suggested Weekly Action</th>
-            <th>Required Output</th>
-          </tr>
-        </thead>
-        <tbody>
-          ${filtered.map(w => `
+      const dict = translations[currentLang];
+
+      root.innerHTML = `
+        <table>
+          <thead>
             <tr>
-              <td><strong>${w.week}</strong></td>
-              <td>${w.phase}</td>
-              <td><strong>${w.focus}</strong></td>
-              <td>${w.resources}</td>
-              <td>${w.action}</td>
-              <td><code>${w.deliverable}</code></td>
+              <th>${dict.th_week}</th>
+              <th>${dict.th_cur_phase}</th>
+              <th>${dict.th_foco}</th>
+              <th>${dict.th_tools}</th>
+              <th>${dict.th_action}</th>
+              <th>${dict.th_deliverable}</th>
             </tr>
-          `).join("")}
-        </tbody>
-      </table>`;
+          </thead>
+          <tbody>
+            ${filtered.map(w => `
+              <tr>
+                <td><strong>${w.week}</strong></td>
+                <td>${w.phase[currentLang]}</td>
+                <td><strong>${w.focus[currentLang]}</strong></td>
+                <td>${w.resources}</td>
+                <td>${w.action[currentLang]}</td>
+                <td><code>${w.deliverable[currentLang]}</code></td>
+              </tr>
+            `).join("")}
+          </tbody>
+        </table>
+      `;
     }
 
-    // Render Portfolio Projects
     function renderProjects() {
       const root = document.getElementById("projectGrid");
       projects.forEach(p => {
-        const card = el("article", {class:"project-card"});
+        const card = el("article", { class: "project-card" });
         card.innerHTML = `
           <div class="tag-row">
             <span class="tag">Level ${p.level}</span>
-            <span class="tag">${p.area}</span>
+            <span class="tag">${p.area[currentLang]}</span>
             <span class="tag ${difficultyClass(p.difficulty)}">${p.difficulty}</span>
           </div>
-          <h3>🛡️ ${p.title}</h3>
-          <div class="project-section-title">Technical Objective</div>
-          <p>${p.obj}</p>
-          <div class="project-section-title">Scope</div>
-          <p>${p.scope}</p>
-          <div class="project-section-title">Tools & Infrastructure</div>
+          <h3>🛡️ ${p.title[currentLang]}</h3>
+          <div class="project-section-title">${currentLang === "es" ? "Objetivo Técnico" : "Technical Objective"}</div>
+          <p>${p.obj[currentLang]}</p>
+          <div class="project-section-title">Scope / Alcance</div>
+          <p>${p.scope[currentLang]}</p>
+          <div class="project-section-title">${currentLang === "es" ? "Herramientas & Tecnologías" : "Tools & Infrastructure"}</div>
           <p><code>${p.tech}</code></p>
-          <div class="project-section-title">Validation Evidence</div>
-          <p>${p.evid}</p>
-          <div class="project-section-title">Portfolio Deliverables</div>
-          <p>${p.deliv}</p>
-          <div class="project-section-title">Key Engineering Lessons</div>
-          <p style="font-style: italic; color: var(--accent-def);">${p.lessons}</p>`;
+          <div class="project-section-title">${currentLang === "es" ? "Evidencia de Validación" : "Validation Evidence"}</div>
+          <p>${p.evid[currentLang]}</p>
+          <div class="project-section-title">${currentLang === "es" ? "Entregables Portafolio" : "Portfolio Deliverables"}</div>
+          <p>${p.deliv[currentLang]}</p>
+          <div class="project-section-title">${currentLang === "es" ? "Lecciones de Ingeniería Aprendidas" : "Key Engineering Lessons"}</div>
+          <p style="font-style: italic; color: var(--accent-def);">${p.lessons[currentLang]}</p>
+        `;
         root.appendChild(card);
       });
     }
 
-    // Render Observable Competency Checklist
     function renderChecklist() {
       const root = document.getElementById("finalChecklist");
       finalChecklist.forEach((group, gi) => {
-        const card = el("div", {class:"card"});
-        card.innerHTML = `<h3>${group.group}</h3>`;
+        const card = el("div", { class: "card" });
+        card.innerHTML = `<h3>${group.group[currentLang]}</h3>`;
         group.items.forEach((item, ii) => {
           const id = `check-bt2-en-${gi}-${ii}`;
           const checked = localStorage.getItem(id) === "true";
-          const label = el("label", {class:"checkline"});
-          label.innerHTML = `<input type="checkbox" ${checked ? "checked" : ""} data-progress="${id}" /> ${item}`;
+          const label = el("label", { class: "checkline" });
+          label.innerHTML = `<input type="checkbox" ${checked ? "checked" : ""} data-progress="${id}" /> ${item[currentLang]}`;
           card.appendChild(label);
         });
         root.appendChild(card);
       });
     }
 
-    // Highlight active link in sidebar navigation on scroll
     function highlightNav() {
       const links = [...document.querySelectorAll(".nav a")];
       const ids = links.map(a => document.querySelector(a.getAttribute("href"))).filter(Boolean);
@@ -1015,40 +1889,23 @@
       onScroll();
     }
 
-    // System Initializations
-    renderDiagnostic();
-    renderPhaseTables();
-    populateFilters();
-    renderResources();
-    renderWeeks();
-    renderProjects();
-    renderChecklist();
-    highlightNav();
+    // --- MAIN INITIALIZATION & CONTROLLERS ---
+    setLanguage(currentLang);
 
-    // Event Listeners
-    ["resourceSearch", "phaseFilter", "difficultyFilter"].forEach(id => {
-      document.getElementById(id).addEventListener("input", renderResources);
-    });
-    document.getElementById("weekSearch").addEventListener("input", renderWeeks);
-
-    // Reset Progress storage key helper
+    // Event listener assignments
     document.getElementById("clearProgress").addEventListener("click", () => {
       Object.keys(localStorage).filter(k => k.startsWith("res-bt2-en-") || k.startsWith("check-bt2-en-")).forEach(k => localStorage.removeItem(k));
       renderResources();
       document.getElementById("finalChecklist").innerHTML = "";
       renderChecklist();
-      showToast("Progress trackers reset successfully.");
+      showToast(translations[currentLang].toast_reset_msg);
     });
 
-    // Handle checklist persistency change
-    document.getElementById("finalChecklist").addEventListener("change", e => {
-      if (e.target.dataset.progress) {
-        localStorage.setItem(e.target.dataset.progress, e.target.checked);
-        if (e.target.checked) {
-          showToast("Competency saved to profile log 🎖️");
-        }
-      }
+    // Filtering logic assignments
+    ["resourceSearch", "phaseFilter", "difficultyFilter"].forEach(id => {
+      document.getElementById(id).addEventListener("input", renderResources);
     });
+    document.getElementById("weekSearch").addEventListener("input", renderWeeksSchedule);
 
   </script>
 </body>
