@@ -385,8 +385,8 @@
         <div class="stat-card card">
           <div class="stat"><b id="stat-phases-num">6</b><span data-i18n="stat_phases">Sequential technical phases of learning</span></div>
           <div class="stat"><b id="stat-weeks-num">104</b><span data-i18n="stat_weeks">Structured weeks of technical prep</span></div>
-          <div class="stat"><b id="stat-projects-num">6</b><span data-i18n="stat_projects">Rigorous portfolio-grade projects</span></div>
-          <div class="stat"><b id="stat-certs-num">3</b><span data-i18n="stat_certs">High-ROI external industry certs</span></div>
+          <div class="stat"><b id="stat-projects-num">7</b><span data-i18n="stat_projects">Rigorous portfolio-grade projects</span></div>
+          <div class="stat"><b id="stat-certs-num">5</b><span data-i18n="stat_certs">High-ROI external industry certs</span></div>
         </div>
       </section>
 
@@ -805,7 +805,7 @@
       ],
       curriculum: [
         { lvl: { es: "Nivelación", en: "Baseline Nivelation" }, phase: { es: "Fase 0: Fundamentos y IT Básica", en: "Phase 0: IT & Systems Fundamentals" }, focus: { es: "Establecer las bases operativas informáticas y de automatización.", en: "Establishing baseline system and shell management, automation, and virtual hosting environments." }, tech: "Git, GitHub, Markdown, VirtualBox, Terminal CLI" },
-        { lvl: { es: "Junior Técnico", en: "Technical Junior" }, phase: { es: "Fase 1: Redes y Telemetría de Red", en: "Phase 1: Networking & Network Telemetry" }, focus: { es: "Análisis profundo de tráfico de datos, topologías y seguridad de red.", en: "In-depth packet capture, protocol modeling, routing topologies, and perimeter defense systems." }, tech: "Wireshark, tcpdump, Packet Tracer, GNS3, Suricata, Snort" },
+        { lvl: { es: "Junior Técnico", en: "Technical Junior" }, phase: { es: "Fase 1: Redes y Telemetría de Red", en: "Phase 1: Networking & Network Telemetry" }, focus: { es: "Análisis profundo de tráfico de datos, topologías y seguridad de red.", en: "In-depth packet capture, protocol modeling, routing topologies, and perimeter defense systems." }, tech: "Wireshark, tcpdump, Packet Tracer, GNS3, Suricata, FortiGate" },
         { lvl: { es: "SOC Associate", en: "SOC Associate" }, phase: { es: "Fase 2: Endpoint y Telemetría Cloud", en: "Phase 2: Endpoint & Cloud Telemetry" }, focus: { es: "Análisis sistemático de telemetría de endpoints, servicios cloud y detección.", en: "Systematic host/cloud audit configurations, API logs, SIEM querying, and detection engineering." }, tech: "Event Viewer, Sysmon, AWS CloudTrail, Splunk, Elastic, Sigma" },
         { lvl: { es: "DFIR Specialist", en: "DFIR Specialist" }, phase: { es: "Fase 3: Forense Digital e Incidentes", en: "Phase 3: Digital Forensics & IR" }, focus: { es: "Investigación forense en profundidad de discos, memoria RAM y malware.", en: "Deep post-exploitation investigation across memory, persistent disk storage, and simple malware behavior." }, tech: "Autopsy, Volatility 3, FTK Imager, Sandboxes (PE/scripts)" },
         { lvl: { es: "Enterprise Architect", en: "Enterprise Architect" }, phase: { es: "Fase 4: AD y Defensa Cloud", en: "Phase 4: Active Directory & Cloud Defense" }, focus: { es: "Hardening y monitorización defensiva en entornos empresariales e identidad cloud.", en: "Securing corporate AD forests, parsing domain-level exploit logs, and managing IAM/telemetry in public cloud infrastructures." }, tech: "Active Directory, Group Policies, AWS, IAM, Azure Sentinel" },
@@ -837,10 +837,10 @@
           en: "Understand low-level data transmission across the TCP/IP stack, master headless network captures, and analyze multi-layered protocol communication."
         },
         rows: [
-          ["1.1", { es: "Fundamentos de Redes Corporativas", en: "Corporate Networking Foundations" }, { es: "Estudio exhaustivo del modelo TCP/IP, direccionamiento CIDR, subnetting estructurado, mapeo de protocolos DHCP, DNS, ARP, HTTP, SMB y TLS.", en: "Deep study of the TCP/IP model, CIDR notation, subnetting, DNS resolution, DHCP handshakes, ARP cache, HTTP/S headers, SMB, and TLS handshake structures." }, "Cisco Skills for All: Network Defense", { es: "5 semanas", en: "5 Weeks" }, { es: "Fase 0", en: "Phase 0" }, { es: "Topología de red corporativa simulada", en: "Topological schematic of a secure enterprise subnet layout" }, { es: "Explicas el flujo exacto (paquete por paquete) del tráfico DNS y HTTP ante un cliente nuevo.", en: "Explain step-by-step packet transitions when a client resolves DNS and queries an external server over HTTP." }],
+          ["1.1", { es: "Fundamentos de Redes Corporativas", en: "Corporate Networking Foundations" }, { es: "Estudio exhaustivo del modelo TCP/IP, direccionamiento CIDR, subnetting estructurado, mapeo de protocolos DHCP, DNS, ARP, HTTP, SMB y TLS. Implementación de enrutamiento OSPF, VLANs y Spanning Tree (CCNA).", en: "Deep study of the TCP/IP model, CIDR notation, subnetting, DNS resolution, DHCP handshakes, ARP cache, HTTP/S headers, SMB, and TLS handshake structures. Implementing OSPF routing, VLANs, and Spanning Tree protocols (CCNA)." }, "Cisco Skills for All, Cisco CCNA", { es: "5 semanas", en: "5 Weeks" }, { es: "Fase 0", en: "Phase 0" }, { es: "Topología de red corporativa simulada", en: "Topological schematic of a secure enterprise subnet layout" }, { es: "Explicas el flujo exacto (paquete por paquete) del tráfico DNS y HTTP ante un cliente nuevo.", en: "Explain step-by-step packet transitions when a client resolves DNS and queries an external server over HTTP." }],
           ["1.2", { es: "Captura de Paquetes en Consola", en: "Headless Packet Captures" }, { es: "Ejecución de capturas sin interfaz gráfica mediante tcpdump, aplicando expresiones de filtrado complejas (BPF) y rotación de volcados (PCAP).", en: "Managing live network captures over command line via tcpdump, writing complex Berkeley Packet Filters (BPF), and configuring log rotating PCAP files." }, "tcpdump manual, interactive command labs", { es: "3 semanas", en: "3 Weeks" }, { es: "Redes Básicas", en: "Networking Foundations" }, { es: "Script de captura automatizado por tcpdump filtrando anomalías DNS", en: "Shell automated tcpdump script logging anomalous non-standard DNS queries" }, { es: "Aislas flujos específicos utilizando exclusivamente herramientas de terminal.", en: "Isolate specific target traffic streams from a live network interface strictly using CLI utilities." }],
           ["1.3", { es: "Análisis y Reconstrucción en Wireshark", en: "Wireshark Dissection" }, { es: "Inspección de anomalías, filtrado avanzado de protocolos, extracción de objetos binarios, análisis de flujos TCP maliciosos e identificación de técnicas de persistencia de red.", en: "Analyzing protocol handshakes, isolating streams, rebuilding binary file payloads from packet data, parsing malformed packets, and tracking persistence indicators." }, "Chris Greer (Wireshark Mastery), THM Wireshark Rooms", { es: "4 semanas", en: "4 Weeks" }, { es: "Fase 1.2", en: "Phase 1.2" }, { es: "Write-up estructurado de análisis de un tráfico de intrusión (PCAP)", en: "Comprehensive technical packet dissection report of a simulated network intrusion (PCAP)" }, { es: "Identificas envenenamiento ARP, escaneos de puertos y exfiltraciones de datos desde Wireshark sin asistencia.", en: "Identify malicious ARP spoofing, directory traversal scans, and data exfiltrations in Wireshark without guidance." }],
-          ["1.4", { es: "Defensa de Red e IDS/IPS", en: "Defensive Perimeters & IDS/IPS" }, { es: "Arquitectura de Firewalls y reglas operativas. Introducción al monitoreo pasivo de red y despliegue de firmas de detección de intrusiones.", en: "Firewall operational modes and rule engineering. Deploying passive network monitoring solutions and parsing intrusion detection alerts." }, "Suricata / Snort Manuals, Zeek Network Analysis", { es: "4 semanas", en: "4 Weeks" }, { es: "Fase 1.3", en: "Phase 1.3" }, { es: "Conjunto de firmas Snort/Suricata funcionales para tráfico anómalo", en: "Custom Suricata alert ruleset targeting abnormal protocol states" }, { es: "Traduces firmas de patrones maliciosos conocidos en reglas de detección operativas.", en: "Translate newly disclosed threat indicators into active, functional IDS/IPS signature rules." }]
+          ["1.4", { es: "Defensa de Red e IDS/IPS", en: "Defensive Perimeters & IDS/IPS" }, { es: "Arquitectura de Firewalls y reglas operativas. Despliegue de firmas de detección de intrusiones. Administración de Firewalls Corporativos (FortiGate), políticas de seguridad e inspección SSL.", en: "Firewall operational modes and rule engineering. Deploying intrusion signatures. Enterprise Firewall Administration (FortiGate), security policies, and SSL inspection." }, "Suricata / Snort, Zeek, Fortinet FortiGate", { es: "4 semanas", en: "4 Weeks" }, { es: "Fase 1.3", en: "Phase 1.3" }, { es: "Conjunto de firmas Snort/Suricata y despliegue de firewall local", en: "Custom Suricata ruleset and localized firewall policy deployment" }, { es: "Traduces firmas de patrones en reglas operativas y configuras políticas de bloqueo en FortiGate VM.", en: "Translate threat indicators into active rules and configure blocking policies in FortiGate VM." }]
         ]
       },
       {
@@ -935,6 +935,28 @@
       },
       {
         phase: "Phase 1",
+        subject: { es: "Redes y Routing (CCNA)", en: "Routing & CCNA" },
+        name: "Cisco CCNA (200-301) Lab Course",
+        source: "Jeremy's IT Lab",
+        url: "https://www.youtube.com/c/JeremysITLab",
+        language: { es: "Inglés", en: "English" },
+        difficulty: "Intermedio",
+        status: { es: "Gratuito", en: "Free" },
+        duration: "6 Weeks",
+        prereq: "Phase 0",
+        learn: {
+          es: "Fundamentos de redes de Cisco, switching, routing OSPF, VLANs y seguridad de acceso a la red.",
+          en: "Cisco network fundamentals, switching, OSPF routing, VLANs, and network access security."
+        },
+        exercises: { es: "Laboratorios prácticos en Packet Tracer.", en: "Practical Packet Tracer labs." },
+        project: { es: "Topología de red corporativa completa simulada.", en: "Complete simulated enterprise network topology." },
+        mastery: {
+          es: "Configuras switches y routers desde cero mediante CLI previniendo ataques de Capa 2.",
+          en: "Configure switches and routers from scratch via CLI while preventing Layer 2 attacks."
+        }
+      },
+      {
+        phase: "Phase 1",
         subject: { es: "Redes Corporativas", en: "Networking" },
         name: "Network Defense Path",
         source: "Cisco Skills for All",
@@ -975,6 +997,28 @@
         mastery: {
           es: "Detectas túneles DNS anómalos o SQLi mirando puramente el tráfico bruto.",
           en: "Detect anomalous DNS tunnels or SQLi looking purely at raw traffic."
+        }
+      },
+      {
+        phase: "Phase 1",
+        subject: { es: "Firewalls y Seguridad (FCP)", en: "Firewalls & Security (FCP)" },
+        name: "Fortinet FCP - FortiGate Security",
+        source: "Fortinet Training Institute",
+        url: "https://training.fortinet.com/",
+        language: { es: "Inglés / Español", en: "English / Spanish" },
+        difficulty: "Intermedio",
+        status: { es: "Gratuito (Registro Oficial)", en: "Free (Official Registration)" },
+        duration: "4 Weeks",
+        prereq: "Networking & CCNA",
+        learn: {
+          es: "Políticas de firewall, NAT, autenticación, inspección SSL, VPNs IPsec y perfiles antivirus web.",
+          en: "Firewall policies, NAT, authentication, SSL inspection, IPsec VPNs, and antivirus profiles."
+        },
+        exercises: { es: "Laboratorios de configuración con FortiOS VM.", en: "Configuration labs using FortiOS VM." },
+        project: { es: "Despliegue perimetral segmentado en laboratorio.", en: "Segmented perimeter deployment in lab." },
+        mastery: {
+          es: "Aplicas principios Zero Trust usando políticas NGFW estrictas en Fortinet.",
+          en: "Apply Zero Trust principles using strict NGFW policies on Fortinet."
         }
       },
       {
@@ -1135,6 +1179,26 @@
 
     const certsData = [
       {
+        name: "Cisco CCNA (200-301)",
+        status: { es: "Estado: INDISPENSABLE (Filtro Global)", en: "Status: INDISPENSABLE (Global Filter)" },
+        desc: {
+          es: "El estándar mundial indiscutible para redes. Valida el conocimiento práctico sobre infraestructura, enrutamiento y conmutación que soporta toda la ciberseguridad.",
+          en: "The undisputed global standard for networking. Validates practical knowledge of infrastructure, routing, and switching that underpins all cybersecurity."
+        },
+        cost: "~$300 USD",
+        format: { es: "Práctico y Teórico (Simulaciones)", en: "Practical & Theoretical (Simulations)" }
+      },
+      {
+        name: "Fortinet FCP (Network Security)",
+        status: { es: "Estado: MUY RECOMENDADO (Mercado Local)", en: "Status: HIGHLY RECOMMENDED (Local Market)" },
+        desc: {
+          es: "El rey absoluto en el mercado corporativo de LATAM y República Dominicana. Garantiza empleabilidad al certificar el manejo del NGFW más implementado (FortiGate).",
+          en: "The absolute king in the LATAM corporate market. Guarantees employability by certifying the management of the most widely deployed NGFW (FortiGate)."
+        },
+        cost: "~$400 USD",
+        format: { es: "Teórico basado en escenarios", en: "Scenario-based theoretical" }
+      },
+      {
         name: "CompTIA Security+",
         status: { es: "Estado: OPCIONAL / Filtro de RRHH", en: "Status: OPTIONAL / HR-Filter Only" },
         desc: {
@@ -1169,9 +1233,9 @@
     const weekSegments = [
       {phase: {es: "Fase 0", en: "Phase 0"}, start:1, end:6, focus: {es: "Consola de administración, comandos avanzados de sistemas Linux y automatización en Windows.", en: "Headless console commands, advanced Linux system management, and PowerShell automation."}, resources: "Linux Journey, CMD/PowerShell reference guides", deliverable: {es: "Script documentado que audita puertos y servicios locales.", en: "Local system audit PowerShell script."}},
       {phase: {es: "Fase 0", en: "Phase 0"}, start:7, end:12, focus: {es: "Mecanismos de control de versiones y virtualización avanzada para laboratorios SOC.", en: "CLI Git operations and advanced local virtualization configurations."}, resources: "Pro Git, VirtualBox documentation", deliverable: {es: "Repositorio Git estructurado y comunicación de máquinas virtuales en red privada.", en: "Active multi-VM host-only test network."}},
-      {phase: {es: "Fase 1", en: "Phase 1"}, start:13, end:22, focus: {es: "Protocolos de red corporativos profunda, direccionamiento IP, flujo de paquetes y arquitectura de red.", en: "TCP/IP protocols, CIDR subnetting, packet structures, and routing logic."}, resources: "Cisco Skills for All", deliverable: {es: "Maqueta conceptual y lógica de direccionamiento corporativo segmentado.", en: "Segmented network logical diagram."}},
+      {phase: {es: "Fase 1", en: "Phase 1"}, start:13, end:22, focus: {es: "Protocolos de red corporativos profunda, direccionamiento IP, flujo de paquetes y arquitectura de red.", en: "TCP/IP protocols, CIDR subnetting, packet structures, and routing logic."}, resources: "Cisco Skills for All, CCNA Labs", deliverable: {es: "Maqueta conceptual y lógica de direccionamiento corporativo segmentado.", en: "Segmented network logical diagram."}},
       {phase: {es: "Fase 1", en: "Phase 1"}, start:23, end:30, focus: {es: "Intercepción de tráfico de red a bajo nivel mediante tcpdump e inspección en Wireshark.", en: "Headless network capturing via tcpdump and deep packet analysis in Wireshark."}, resources: "Chris Greer, tcpdump manual", deliverable: {es: "Informe detallado de análisis forense de un archivo de captura PCAP.", en: "Packet analysis report of a mock intrusion PCAP."}},
-      {phase: {es: "Fase 1", en: "Phase 1"}, start:31, end:36, focus: {es: "Bastionado perimetral e implementación técnica de reglas de detección IDS/IPS con Suricata/Snort.", en: "Firewall architectures and writing Suricata/Snort alert rules."}, resources: "Suricata manual, Snort guide", deliverable: {es: "Reglas Suricata validadas operativas para detectar escaneos de red anómalos.", en: "Valid Suricata signature set detecting network probes."}},
+      {phase: {es: "Fase 1", en: "Phase 1"}, start:31, end:36, focus: {es: "Bastionado perimetral, reglas de detección IDS/IPS y configuración de firewalls Fortinet.", en: "Firewall architectures, IDS/IPS alerts and Fortinet firewall configurations."}, resources: "Fortinet Training, Suricata manual", deliverable: {es: "Despliegue operativo de políticas de bloqueo en FortiGate VM.", en: "Operational deployment of blocking policies in FortiGate VM."}},
       {phase: {es: "Fase 2", en: "Phase 2"}, start:37, end:44, focus: {es: "Análisis avanzado de logs de sistema, despliegue de Sysmon y análisis del árbol de ejecución de procesos de hosts.", en: "System auditing policies, Sysmon deployment, and process tree analysis."}, resources: "Microsoft Sysinternals, Windows auditing manuals", deliverable: {es: "Repositorio local de Sysmon instalado con telemetría centralizada en disco.", en: "Centralized local logging Sysmon install package."}},
       {phase: {es: "Fase 2", en: "Phase 2"}, start:45, end:48, focus: {es: "Ingesta y parseo de logs de telemetría cloud: AWS CloudTrail, VPC Flow Logs y flujos API.", en: "Ingesting and parsing cloud-native telemetry logs: AWS CloudTrail, VPC Flow Logs, and API feeds."}, resources: "AWS CloudTrail Docs", deliverable: {es: "Parseadores JSON de logs Cloud y esquema de mapeo de eventos.", en: "Cloud log JSON parsers and event mapping schematic."}},
       {phase: {es: "Fase 2", en: "Phase 2"}, start:49, end:60, focus: {es: "Consultas avanzadas en SIEM (Splunk/Elastic), indexación de eventos y monitoreo correlacionado.", en: "SIEM operations (Splunk/Elastic), ingesting data logs, and building search alerts."}, resources: "Splunk Enterprise, Elastic", deliverable: {es: "Dashboard de monitorización del SOC capaz de reportar alertas basadas en comportamiento.", en: "Centralized Splunk SOC monitoring dashboard."}},
@@ -1275,6 +1339,36 @@
         lessons: {
           es: "El análisis de red es inútil si no se tiene una línea base de tráfico habitual corporativo para contrastar patrones de comportamiento del atacante.",
           en: "Understanding standard network baselines is critical to quickly isolating high-risk exfiltrations amidst massive streams of normal traffic."
+        }
+      },
+      {
+        level: "1",
+        area: { es: "Arquitectura Perimetral", en: "Perimeter Architecture" },
+        title: {
+          es: "Despliegue y Segmentación Segura con FortiGate VM",
+          en: "Secure Segmentation and Deployment with FortiGate VM"
+        },
+        difficulty: "Intermedio",
+        tech: "FortiOS VM, VirtualBox/GNS3, Cisco IOS (VLANs)",
+        obj: {
+          es: "Segmentar una red plana vulnerable utilizando un firewall Fortinet virtual, aplicando políticas de Zero Trust e inspección de tráfico.",
+          en: "Segment a vulnerable flat network using a virtual Fortinet firewall, enforcing Zero Trust policies and traffic inspection."
+        },
+        scope: {
+          es: "Integración de FortiGate VM en un hipervisor. Configuración de interfaces (WAN/LAN), enrutamiento, reglas de firewall y perfiles UTM (Antivirus, Web Filter).",
+          en: "Integration of FortiGate VM in a hypervisor. Interface configuration, routing, firewall rules, and UTM profiles (AV, Web Filter)."
+        },
+        evid: {
+          es: "Capturas de bloqueo de tráfico malicioso (EICAR) a través de políticas UTM y separación efectiva de tráfico entre VLANs.",
+          en: "Screenshots of malicious traffic blocking via UTM policies and effective traffic isolation between VLANs."
+        },
+        deliv: {
+          es: "Documentación técnica de la topología de red y configuración de FortiOS en Markdown, simulando un entorno corporativo.",
+          en: "Technical markdown documentation of the network topology and FortiOS configuration, simulating an enterprise environment."
+        },
+        lessons: {
+          es: "La seguridad teórica (Suricata/Snort) cobra valor real cuando se integra en la marca que lidera la infraestructura corporativa (Fortinet).",
+          en: "Theoretical security (Suricata/Snort) gains real-world value when integrated into the leading brand of enterprise infrastructure (Fortinet)."
         }
       },
       {
@@ -1423,9 +1517,10 @@
       {
         group: { es: "Redes y Defensa Cloud", en: "Network & Cloud Security Dissection" },
         items: [
+          { es: "Comprendo el enrutamiento a nivel CCNA, incluyendo la configuración de VLANs y el protocolo Spanning Tree (STP).", en: "I understand routing at a CCNA level, including VLAN configuration and Spanning Tree Protocol (STP)." },
+          { es: "Sé configurar políticas de seguridad, inspección SSL y perfiles de filtrado en un entorno de laboratorio FortiGate.", en: "I can configure security policies, SSL inspection, and filtering profiles in a FortiGate lab environment." },
           { es: "Puedo programar comandos de captura tcpdump desde consola filtrando tráfico específico de una subred por puertos y protocolos de red.", en: "I can initiate tcpdump packet captures over headless terminal consoles applying custom BPF filtering parameters." },
           { es: "Sé identificar patrones de ataque comunes (ARP spoofing, DNS tunneling, exfiltraciones) inspeccionando paquetes con Wireshark.", en: "I can locate ARP spoofing, DNS tunnels, and anomalous data dumps when inspecting raw packet capture files in Wireshark." },
-          { es: "He construido y testeado de forma práctica 3 firmas completas para sistemas de prevención de intrusiones (Snort / Suricata).", en: "I have built and tested 3 custom intrusion detection signatures for Suricata or Snort." },
           { es: "Puedo analizar logs JSON de AWS CloudTrail y logs de flujo VPC para aislar fugas de tokens IMDSv1 y escaladas IAM.", en: "I can parse JSON AWS CloudTrail and VPC Flow logs to isolate metadata token abuse (IMDSv1 vs v2) and privilege escalation." },
           { es: "Sé desplegar topologías lógicas de red seguras usando Packet Tracer o GNS3 documentando su direccionamiento IP/CIDR corporativo.", en: "I can draft and secure an enterprise CIDR network topology using Packet Tracer or GNS3 to prevent lateral domain hops." }
         ]
